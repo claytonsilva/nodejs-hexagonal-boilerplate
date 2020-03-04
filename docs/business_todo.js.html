@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: business/todo.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: business/todo.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * reference only imports (for documentation)
+ */
+// eslint-disable-next-line no-unused-vars
+import { Todo, MutateTodoInput, MutateTodoOutput } from './index'
+/**
+ * code imports
+ */
+import { v4 as uuidv4 } from 'uuid'
+import { moment, toISOString } from './moment'
+import { ETodoStatus, EPriority } from './constants'
+import R from 'ramda'
+// import { EPriority, ETodoStatus } from './constants'
+import {
+  EClassError,
+  throwCustomError,
+  // eslint-disable-next-line no-unused-vars
+  CustomError
+} from '../utils'
+
+/**
+ * @description Validate a Todo event on creation
+ * @memberof business
+ * @function
+ * @throws {CustomError}
+ * @param {Todo} data imput data for create task
+ * @param {string} owner owner of the task
+ * @returns {Todo}
+ */
+export const validateCreateTodo = (data, owner) => {
+  const creationData = toISOString(moment)
+
+  if (R.isNil(data) &amp;&amp; !data.taskDescription) {
+    throwCustomError(new Error('invalid entry on field data, missing information'), 'business.protocol.validateCreateTodo', EClassError.USER_ERROR)
+  }
+
+  if (!owner) {
+    throwCustomError(new Error('owner is missing'), 'business.protocol.validateCreateTodo', EClassError.USER_ERROR)
+  }
+
+  if (!data.taskPriority &amp;&amp; Object.values(EPriority).includes(data.taskPriority)) {
+    throwCustomError(new Error(`invalid value for priority: got ${data.taskPriority}`), 'business.protocol.validateCreateTodo', EClassError.USER_ERROR)
+  }
+
+  if (!data.taskStatus &amp;&amp; Object.values(EPriority).includes(data.taskStatus)) {
+    throwCustomError(new Error(`invalid value for status: got ${data.taskStatus}`), 'business.protocol.validateCreateTodo', EClassError.USER_ERROR)
+  }
+
+  return {
+    // default values if is missing
+    taskOrder: 0,
+    taskPriority: EPriority.LOW,
+    taskStatus: ETodoStatus.NEW,
+    ...data,
+    // information from system
+    taskOwner: owner,
+    creationData,
+    id: uuidv4()
+  }
+}
+
+/**
+ * @description Validate a Todo event on update
+ * @memberof business
+ * @function
+ * @throws {CustomError}
+ * @param {MutateTodoInput} data update task input
+ * @param {Todo} originalData current task data
+ * @param {string} owner owner of the task
+ * @returns {MutateTodoOutput}
+ */
+export const validateUpdateTodo = (data, originalData, owner) => {
+  const lastUpdateDate = toISOString(moment)
+
+  if (R.isNil(originalData)) {
+    throwCustomError(new Error('no data for this id'), 'business.protocol.validateUpdateTodo', EClassError.USER_ERROR)
+  }
+
+  if (R.isNil(data) &amp;&amp; !data.taskDescription) {
+    throwCustomError(new Error('invalid entry on field data, missing information'), 'business.protocol.validateCreateTodo', EClassError.USER_ERROR)
+  }
+
+  if (!owner) {
+    throwCustomError(new Error('owner is missing'), 'business.protocol.validateCreateTodo', EClassError.USER_ERROR)
+  }
+
+  if (!data.taskPriority &amp;&amp; Object.values(EPriority).includes(data.taskPriority)) {
+    throwCustomError(new Error(`invalid value for priority: got ${data.taskPriority}`), 'business.protocol.validateCreateTodo', EClassError.USER_ERROR)
+  }
+
+  if (!data.taskStatus &amp;&amp; Object.values(EPriority).includes(data.taskStatus)) {
+    throwCustomError(new Error(`invalid value for status: got ${data.taskStatus}`), 'business.protocol.validateCreateTodo', EClassError.USER_ERROR)
+  }
+
+  return ['taskOwner', 'id']
+    .reduce(
+      (reducedData, field) => R.dissoc(field, reducedData),
+      {
+        ...originalData,
+        ...data,
+        lastUpdateDate
+      }
+    )
+}
+
+/**
+ * @description Validate a Todo event on delete
+ * @memberof business
+ * @function
+ * @throws {CustomError}
+ * @param {Todo} originalData current task data
+ * @param {string} owner owner of the task
+ * @returns {Todo}
+ */
+export const validateDeleteTodo = (originalData, owner) => {
+  if (R.isNil(originalData)) {
+    throwCustomError(new Error('no data for this id'), 'business.protocol.validateDeleteTodo', EClassError.USER_ERROR)
+  }
+
+  if (!owner) {
+    throwCustomError(new Error('owner is missing'), 'business.protocol.validateDeleteTodo', EClassError.USER_ERROR)
+  }
+
+  return {
+    originalData
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Mar 05 2020 06:00:03 GMT-0300 (GMT-03:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,5 +1,11 @@
 # Boilerplate de Arquitetura Hexagonal
 
+[![Coverage Status](https://coveralls.io/repos/github/claytonsilva/nodejs-hexagonal-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/claytonsilva/nodejs-hexagonal-boilerplate?branch=master)
+[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![Conventional Changelog](https://img.shields.io/badge/changelog-conventional-brightgreen.svg)](http://conventional-changelog.github.io)
+[![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version)
+[![CircleCI](https://circleci.com/gh/claytonsilva/nodejs-hexagonal-boilerplate.svg?style=svg)](https://circleci.com/gh/claytonsilva/nodejs-hexagonal-boilerplate)
+
 ## Inspiração
 
 Inspirado em deselvolver essa arquitetura depois de acompanhar algumas palestras da Nubank, a idéia de separação de responsabilidades por camadas e modelos de testes me fez inspirar a criar um modelo em Node.js.

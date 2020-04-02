@@ -27,8 +27,8 @@
     "usePathForSuiteName": "true"
   },
   "engines": {
-    "node": "^10.19.0",
-    "yarn": "^1.6.0",
+    "node": "^12.16.1",
+    "yarn": "^1.20.0",
     "npm": "^6.0.0"
   },
   "lint-staged": {

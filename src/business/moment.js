@@ -1,23 +1,25 @@
-import * as R from 'ramda'
+import R from 'ramda'
 import { momentConfig } from '../config'
-import * as _moment from 'moment-timezone'
+import moment from 'moment'
+import 'moment-timezone'
 
 /**
  * @description Moment with timezone local
  * @memberof business
  * @function
+ * @param  {moment.MomentInput} dta (optional) override dta if necessary
  * @param  {string} timezone (optional) overload default timezone if necessary
- * @returns {_moment.Moment} moment with timezone configure
+ * @returns {moment.Moment} moment with timezone configure
  */
-const moment = (timezone) => {
-  return _moment.tz(timezone || momentConfig.timezone)
+const momentWithTz = (dta, timezone = momentConfig.timezone) => {
+  return (R.isNil(dta) ? moment() : moment(dta)).tz(timezone)
 }
 
 /**
  * @description Get the current time formated with 'YYYYMMDDHHmm'
  * @memberof business
  * @function
- * @param {Moment} dta instantiate moment object
+ * @param  {moment.Moment} dta instantiate moment object
  * @returns {string} Protocol prefix.
  */
 const getDateFormated = (dta) => {
@@ -28,15 +30,15 @@ const getDateFormated = (dta) => {
  * @description Moment with timezone local in iso8601
  * @memberof business
  * @function
- * @param  {_moment.Moment} dta (optional) moment instance for overload "new moment()" if necessary
+ * @param  {moment.Moment} dta (optional) moment instance for overload "new moment()" if necessary
  * @param  {string} timezone (optional) overload default timezone if necessary
  * @returns {string} iso8601 string datetime with timezone defined
  */
-const toISOString = (dta, timezone) => {
-  return (R.isNil(dta) || _moment.tz(timezone || momentConfig.timezone)).toISOString(true)
+const toISOString = (dta, timezone = momentConfig.timezone) => {
+  return (R.isNil(dta) ? momentWithTz(null, timezone) : dta).toISOString(true)
 }
 
 /**
  * Centralizando as configurações do moment
  */
-export { moment, toISOString, getDateFormated }
+export { momentWithTz, toISOString, getDateFormated }

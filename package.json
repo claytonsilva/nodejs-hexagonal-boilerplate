@@ -22,8 +22,7 @@
   "lint-staged": {
     "src/**/*.js": [
       "eslint --fix",
-      "jsdoc ./src/**/*.js  -d ./docs",
-      "jsdoc ./src/**/*.js  -d ./docs",
+      "yarn doc",
       "git add"
     ]
   },

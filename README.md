@@ -1,4 +1,4 @@
-# Boilerplate de Arquiteturra Hexagonal
+# Boilerplate de Arquitetura Hexagonal
 
 ## Inspiração
 

@@ -13,8 +13,10 @@ jobs:
       - run: sudo ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
       - checkout
       - run: yarn
-      - run: yarn test
+      - run: yarn test-ci
       - coveralls/upload
+      - store_test_results:
+          path: test-results
 workflows:
   build-and-test:
     jobs:

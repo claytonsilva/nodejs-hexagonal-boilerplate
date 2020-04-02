@@ -98,7 +98,6 @@
     "minimist": "^1.2.2",
     "dd-trace": "^0.14.0",
     "mkdirp": "^1.0.3",
-    "typescript": ">=2.8.0",
-    "core-js": ">=3.0.0"
+    "typescript": ">=2.8.0"
   }
 }

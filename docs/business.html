@@ -304,6 +304,392 @@
     
 
     
+    <h4 class="name" id=".exports.validateCreateTodo"><span class="type-signature">(static) </span>exports.validateCreateTodo<span class="signature">(data, owner)</span><span class="type-signature"> &rarr; {<a href="global.html#Todo">Todo</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Validate a Todo event on creation
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Todo">Todo</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">imput data for create task</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>owner</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">owner of the task</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="business_todo.js.html">business/todo.js</a>, <a href="business_todo.js.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type"><a href="global.html#CustomError">CustomError</a></span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#Todo">Todo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".exports.validateDeleteTodo"><span class="type-signature">(static) </span>exports.validateDeleteTodo<span class="signature">(originalData, owner)</span><span class="type-signature"> &rarr; {<a href="global.html#Todo">Todo</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Validate a Todo event on delete
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>originalData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Todo">Todo</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">current task data</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>owner</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">owner of the task</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="business_todo.js.html">business/todo.js</a>, <a href="business_todo.js.html#line115">line 115</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type"><a href="global.html#CustomError">CustomError</a></span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#Todo">Todo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id=".exports.validateDeleteTodo"><span class="type-signature">(static) </span>exports.validateDeleteTodo<span class="signature">(originalData, owner)</span><span class="type-signature"> &rarr; {<a href="global.html#Todo">Todo</a>}</span></h4>
     
 
@@ -713,6 +1099,222 @@
     
 
     
+    <h4 class="name" id=".exports.validateUpdateTodo"><span class="type-signature">(static) </span>exports.validateUpdateTodo<span class="signature">(data, originalData, owner)</span><span class="type-signature"> &rarr; {<a href="global.html#MutateTodoOutput">MutateTodoOutput</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Validate a Todo event on update
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#MutateTodoInput">MutateTodoInput</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">update task input</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>originalData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Todo">Todo</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">current task data</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>owner</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">owner of the task</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="business_todo.js.html">business/todo.js</a>, <a href="business_todo.js.html#line72">line 72</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type"><a href="global.html#CustomError">CustomError</a></span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#MutateTodoOutput">MutateTodoOutput</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id=".getDateFormated"><span class="type-signature">(static) </span>getDateFormated<span class="signature">(dta)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
@@ -763,7 +1365,7 @@
             <td class="type">
             
                 
-<span class="param-type">Moment</span>
+<span class="param-type">moment.Moment</span>
 
 
             
@@ -814,7 +1416,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="business_moment.js.html">business/moment.js</a>, <a href="business_moment.js.html#line23">line 23</a>
+        <a href="business_moment.js.html">business/moment.js</a>, <a href="business_moment.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -872,7 +1474,166 @@
     
 
     
-    <h4 class="name" id=".moment"><span class="type-signature">(static) </span>moment<span class="signature">(timezone)</span><span class="type-signature"> &rarr; {_moment.Moment}</span></h4>
+    <h4 class="name" id=".getDateFormated"><span class="type-signature">(static) </span>getDateFormated<span class="signature">(dta)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get the current time formated with 'YYYYMMDDHHmm'
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dta</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">moment.Moment</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">instantiate moment object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="business_moment.js.html">business/moment.js</a>, <a href="business_moment.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Protocol prefix.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".momentWithTz"><span class="type-signature">(static) </span>momentWithTz<span class="signature">(dta, timezone)</span><span class="type-signature"> &rarr; {moment.Moment}</span></h4>
     
 
     
@@ -912,6 +1673,29 @@
     </thead>
 
     <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dta</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">moment.MomentInput</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(optional) override dta if necessary</td>
+        </tr>
+
     
 
         <tr>
@@ -973,7 +1757,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="business_moment.js.html">business/moment.js</a>, <a href="business_moment.js.html#line12">line 12</a>
+        <a href="business_moment.js.html">business/moment.js</a>, <a href="business_moment.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -1013,7 +1797,189 @@
     </dt>
     <dd>
         
-<span class="param-type">_moment.Moment</span>
+<span class="param-type">moment.Moment</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".momentWithTz"><span class="type-signature">(static) </span>momentWithTz<span class="signature">(dta, timezone)</span><span class="type-signature"> &rarr; {moment.Moment}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Moment with timezone local
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dta</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">moment.MomentInput</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(optional) override dta if necessary</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>timezone</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(optional) overload default timezone if necessary</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="business_moment.js.html">business/moment.js</a>, <a href="business_moment.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    moment with timezone configure
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">moment.Moment</span>
 
 
     </dd>
@@ -1081,7 +2047,7 @@
             <td class="type">
             
                 
-<span class="param-type">_moment.Moment</span>
+<span class="param-type">moment.Moment</span>
 
 
             
@@ -1155,7 +2121,189 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="business_moment.js.html">business/moment.js</a>, <a href="business_moment.js.html#line35">line 35</a>
+        <a href="business_moment.js.html">business/moment.js</a>, <a href="business_moment.js.html#line37">line 37</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    iso8601 string datetime with timezone defined
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".toISOString"><span class="type-signature">(static) </span>toISOString<span class="signature">(dta, timezone)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Moment with timezone local in iso8601
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dta</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">moment.Moment</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(optional) moment instance for overload "new moment()" if necessary</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>timezone</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(optional) overload default timezone if necessary</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="business_moment.js.html">business/moment.js</a>, <a href="business_moment.js.html#line37">line 37</a>
     </li></ul></dd>
     
 
@@ -1229,7 +2377,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Mar 05 2020 06:00:03 GMT-0300 (GMT-03:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Apr 02 2020 07:12:06 GMT-0300 (GMT-03:00)
 </footer>
 
 <script> prettyPrint(); </script>

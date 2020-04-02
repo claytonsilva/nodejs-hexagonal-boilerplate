@@ -7,7 +7,7 @@
     "space-before-function-paren": "off",
     "immutable/no-let": 2,
     "immutable/no-this": 2,
-    "immutable/no-mutation": 2
+    "immutable/no-mutation": 2,
     // "jsdoc/check-alignment": 1, // Recommended
     // "jsdoc/check-examples": 0,
     // "jsdoc/check-indentation": 1,
@@ -34,12 +34,19 @@
     // "jsdoc/require-returns-description": 1, // Recommended
     // "jsdoc/require-returns-type": 1, // Recommended
     // "jsdoc/valid-types": 0 // Recommended
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   },
   "plugins": [
     "fp",
-    "immutable"
+    "immutable",
+    "jest"
   ],
   "env": {
+    "jest/globals": true,
     "jest": true,
     "browser": true
   }

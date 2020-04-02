@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: adapters</title>
+    <title>JSDoc: Namespace: ports/state-machines</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: adapters</h1>
+    <h1 class="page-title">Namespace: ports/state-machines</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>adapters</h2>
+        <h2>ports/state-machines</h2>
         
     
 </header>
@@ -37,7 +37,7 @@
     <div class="container-overview">
     
         
-            <div class="description">this namespace control communication between business and state-machines</div>
+            <div class="description">this namespace control state-machine api methods</div>
         
 
         
@@ -72,7 +72,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_index.js.html">adapters/index.js</a>, <a href="adapters_index.js.html#line1">line 1</a>
+        <a href="ports_state-machines_index.js.html">ports/state-machines/index.js</a>, <a href="ports_state-machines_index.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -100,6 +100,82 @@
 
     
 
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".exports.classError"><span class="type-signature">(static, constant) </span>exports.classError<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Enum for classError values.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ports_state-machines_constants.js.html">ports/state-machines/constants.js</a>, <a href="ports_state-machines_constants.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
     
 
     
@@ -111,7 +187,7 @@
     
 
     
-    <h4 class="name" id=".exports.createTodo"><span class="type-signature">(async, static) </span>exports.createTodo<span class="signature">(escriba, repository)</span><span class="type-signature"> &rarr; {Promise.&lt;createTodoReturn>}</span></h4>
+    <h4 class="name" id=".adapter"><span class="type-signature">(static) </span>adapter<span class="signature">(escriba, repository)</span><span class="type-signature"> &rarr; {<a href="global.html#AdapterInstance">AdapterInstance</a>}</span></h4>
     
 
     
@@ -119,7 +195,7 @@
 
 
 <div class="description">
-    Create todo in the DynamoDB.
+    dynamo repository for state machine
 </div>
 
 
@@ -171,7 +247,7 @@
 
             
 
-            <td class="description last">instance of escriba</td>
+            <td class="description last">Instance of escriba.</td>
         </tr>
 
     
@@ -184,7 +260,7 @@
             <td class="type">
             
                 
-<span class="param-type">DynamoRepositoryInstance</span>
+<span class="param-type"><a href="global.html#DynamoRepositoryInstance">DynamoRepositoryInstance</a></span>
 
 
             
@@ -194,7 +270,7 @@
 
             
 
-            <td class="description last">state-machine database methods</td>
+            <td class="description last">repository instatiated</td>
         </tr>
 
     
@@ -235,7 +311,344 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line52">line 52</a>
+        <a href="adapters_index.js.html">adapters/index.js</a>, <a href="adapters_index.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#AdapterInstance">AdapterInstance</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".exports.databaseRepository"><span class="type-signature">(static) </span>exports.databaseRepository<span class="signature">(dynamo)</span><span class="type-signature"> &rarr; {<a href="global.html#DynamoRepositoryInstance">DynamoRepositoryInstance</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    dynamo repository for state machine
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dynamo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">DynamoDB.DocumentClient</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">instance of dynamo api</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ports_state-machines_index.js.html">ports/state-machines/index.js</a>, <a href="ports_state-machines_index.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    instance of repository for database
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#DynamoRepositoryInstance">DynamoRepositoryInstance</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".exports.deleteDocument"><span class="type-signature">(async, static) </span>exports.deleteDocument<span class="signature">(dynamo, tableName)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Delete a document on table TableName in the DynamoDB.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dynamo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">DynamoDB.DocumentClient</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">instance of Dynamo SDK for aws (DocumentClient)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tableName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">name of table in DynamoDB</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ports_state-machines_aws.dynamo.js.html">ports/state-machines/aws.dynamo.js</a>, <a href="ports_state-machines_aws.dynamo.js.html#line111">line 111</a>
     </li></ul></dd>
     
 
@@ -279,7 +692,7 @@
 
         
 <div class="param-desc">
-    function to call createTodo direct
+    Object searched from table
 </div>
 
 
@@ -290,7 +703,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;createTodoReturn></span>
+<span class="param-type">Object</span>
 
 
     </dd>
@@ -308,7 +721,7 @@
     
 
     
-    <h4 class="name" id=".exports.deleteTodo"><span class="type-signature">(async, static) </span>exports.deleteTodo<span class="signature">(escriba, repository)</span><span class="type-signature"> &rarr; {Promise.&lt;deleteTodoReturn>}</span></h4>
+    <h4 class="name" id=".exports.getDocument"><span class="type-signature">(async, static) </span>exports.getDocument<span class="signature">(dynamo, tableName)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -316,7 +729,7 @@
 
 
 <div class="description">
-    delete todo in the DynamoDB.
+    Get a document on table TableName in the DynamoDB.
 </div>
 
 
@@ -352,13 +765,13 @@
 
         <tr>
             
-                <td class="name"><code>escriba</code></td>
+                <td class="name"><code>dynamo</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Logger</span>
+<span class="param-type">DynamoDB.DocumentClient</span>
 
 
             
@@ -368,20 +781,20 @@
 
             
 
-            <td class="description last">instance of escriba</td>
+            <td class="description last">instance of Dynamo SDK for aws (DocumentClient)</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>repository</code></td>
+                <td class="name"><code>tableName</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">DynamoRepositoryInstance</span>
+<span class="param-type">string</span>
 
 
             
@@ -391,7 +804,7 @@
 
             
 
-            <td class="description last">state-machine database methods</td>
+            <td class="description last">name of table in DynamoDB</td>
         </tr>
 
     
@@ -432,7 +845,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line131">line 131</a>
+        <a href="ports_state-machines_aws.dynamo.js.html">ports/state-machines/aws.dynamo.js</a>, <a href="ports_state-machines_aws.dynamo.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -476,7 +889,7 @@
 
         
 <div class="param-desc">
-    function to call deleteTodo direct
+    Object searched from table
 </div>
 
 
@@ -487,7 +900,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;deleteTodoReturn></span>
+<span class="param-type">Object</span>
 
 
     </dd>
@@ -505,7 +918,7 @@
     
 
     
-    <h4 class="name" id=".exports.getTodo"><span class="type-signature">(async, static) </span>exports.getTodo<span class="signature">(repository)</span><span class="type-signature"> &rarr; {Promise.&lt;getTodoReturn>}</span></h4>
+    <h4 class="name" id=".exports.putDocument"><span class="type-signature">(async, static) </span>exports.putDocument<span class="signature">(dynamo, tableName)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -513,7 +926,7 @@
 
 
 <div class="description">
-    Handler function to get todo data by id .
+    Insert document in the DynamoDB.
 </div>
 
 
@@ -549,13 +962,13 @@
 
         <tr>
             
-                <td class="name"><code>repository</code></td>
+                <td class="name"><code>dynamo</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">DynamoRepositoryInstance</span>
+<span class="param-type">DynamoDB.DocumentClient</span>
 
 
             
@@ -565,7 +978,30 @@
 
             
 
-            <td class="description last">State-machine database methods.</td>
+            <td class="description last">instance of Dynamo SDK for aws (DocumentClient)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tableName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">name of table in DynamoDB</td>
         </tr>
 
     
@@ -606,7 +1042,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line34">line 34</a>
+        <a href="ports_state-machines_aws.dynamo.js.html">ports/state-machines/aws.dynamo.js</a>, <a href="ports_state-machines_aws.dynamo.js.html#line54">line 54</a>
     </li></ul></dd>
     
 
@@ -650,7 +1086,7 @@
 
         
 <div class="param-desc">
-    GetDocument method ready to execute.
+    Object searched from table
 </div>
 
 
@@ -661,7 +1097,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;getTodoReturn></span>
+<span class="param-type">Object</span>
 
 
     </dd>
@@ -679,7 +1115,7 @@
     
 
     
-    <h4 class="name" id=".exports.updateTodo"><span class="type-signature">(async, static) </span>exports.updateTodo<span class="signature">(escriba, repository)</span><span class="type-signature"> &rarr; {Promise.&lt;updateTodoReturn>}</span></h4>
+    <h4 class="name" id=".exports.queueRepository"><span class="type-signature">(static) </span>exports.queueRepository<span class="signature">(sqs, queueUrl)</span><span class="type-signature"> &rarr; {<a href="global.html#QueueRepositoryInstance">QueueRepositoryInstance</a>}</span></h4>
     
 
     
@@ -687,7 +1123,7 @@
 
 
 <div class="description">
-    Update todo in the DynamoDB.
+    queue repository for state machine
 </div>
 
 
@@ -723,13 +1159,13 @@
 
         <tr>
             
-                <td class="name"><code>escriba</code></td>
+                <td class="name"><code>sqs</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Logger</span>
+<span class="param-type">sqs</span>
 
 
             
@@ -739,20 +1175,20 @@
 
             
 
-            <td class="description last">instance of escriba</td>
+            <td class="description last">instance of SQS</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>repository</code></td>
+                <td class="name"><code>queueUrl</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">DynamoRepositoryInstance</span>
+<span class="param-type">string</span>
 
 
             
@@ -762,7 +1198,7 @@
 
             
 
-            <td class="description last">state-machine database methods</td>
+            <td class="description last">queue url string</td>
         </tr>
 
     
@@ -803,7 +1239,185 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line84">line 84</a>
+        <a href="ports_state-machines_index.js.html">ports/state-machines/index.js</a>, <a href="ports_state-machines_index.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#QueueRepositoryInstance">QueueRepositoryInstance</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".exports.sendMessage"><span class="type-signature">(async, static) </span>exports.sendMessage<span class="signature">(sqs, queueUrl)</span><span class="type-signature"> &rarr; {Promise.&lt;SQS.SendMessageResult>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Send the message to sqs.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sqs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">SQS</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">instance of SQS sdk from aws.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>queueUrl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">url from sqs queue service from aws.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ports_state-machines_aws.sqs.js.html">ports/state-machines/aws.sqs.js</a>, <a href="ports_state-machines_aws.sqs.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -847,7 +1461,7 @@
 
         
 <div class="param-desc">
-    function to call updateTodo direct
+    response from aws
 </div>
 
 
@@ -858,7 +1472,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;updateTodoReturn></span>
+<span class="param-type">Promise.&lt;SQS.SendMessageResult></span>
 
 
     </dd>
@@ -871,18 +1485,12 @@
 
 
         
-    
-
-    
-        <h3 class="subsection-title">Type Definitions</h3>
-
-        
-                
+            
 
     
 
     
-    <h4 class="name" id=".createTodoReturn"><span class="type-signature"></span>createTodoReturn<span class="signature">(params, owner)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Todo">Todo</a>>}</span></h4>
+    <h4 class="name" id=".exports.updateDocument"><span class="type-signature">(async, static) </span>exports.updateDocument<span class="signature">(dynamo, tableName)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -890,7 +1498,7 @@
 
 
 <div class="description">
-    This callback is displayed as part of the createTodo function.
+    Update document in the DynamoDB.
 </div>
 
 
@@ -926,13 +1534,13 @@
 
         <tr>
             
-                <td class="name"><code>params</code></td>
+                <td class="name"><code>dynamo</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#MutateTodoInput">MutateTodoInput</a></span>
+<span class="param-type">DynamoDB.DocumentClient</span>
 
 
             
@@ -942,14 +1550,14 @@
 
             
 
-            <td class="description last">input param for createTodo</td>
+            <td class="description last">instance of Dynamo SDK for aws (DocumentClient)</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>owner</code></td>
+                <td class="name"><code>tableName</code></td>
             
 
             <td class="type">
@@ -965,7 +1573,7 @@
 
             
 
-            <td class="description last">of the data entry logged</td>
+            <td class="description last">name of table in DynamoDB</td>
         </tr>
 
     
@@ -1006,7 +1614,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line154">line 154</a>
+        <a href="ports_state-machines_aws.dynamo.js.html">ports/state-machines/aws.dynamo.js</a>, <a href="ports_state-machines_aws.dynamo.js.html#line79">line 79</a>
     </li></ul></dd>
     
 
@@ -1029,13 +1637,28 @@
 
 
 
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type"><a href="global.html#CustomError">CustomError</a></span>
+
+
+    
+    </div>
+
+
+    
 
 
 <h5>Returns:</h5>
 
         
 <div class="param-desc">
-    new report data
+    Object searched from table
 </div>
 
 
@@ -1046,7 +1669,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;<a href="global.html#Todo">Todo</a>></span>
+<span class="param-type">Object</span>
 
 
     </dd>
@@ -1058,553 +1681,9 @@
 
 
 
-            
-                
-
-    
-
-    
-    <h4 class="name" id=".deleteTodoReturn"><span class="type-signature"></span>deleteTodoReturn<span class="signature">(id, owner)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Todo">Todo</a>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    This callback is displayed as part of the deleteTodo function.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
         
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">id of the current data for update</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>owner</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">of the data entry logged</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line173">line 173</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    new report data
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;<a href="global.html#Todo">Todo</a>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-            
-                
-
-    
-
-    
-    <h4 class="name" id=".getTodoReturn"><span class="type-signature"></span>getTodoReturn<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Todo">Todo</a>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    This callback is displayed as part of the getTodo function.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">key of the data</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line182">line 182</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    task from repository
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;<a href="global.html#Todo">Todo</a>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-            
-                
-
-    
-
-    
-    <h4 class="name" id=".updateTodoReturn"><span class="type-signature"></span>updateTodoReturn<span class="signature">(id, params, owner)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Todo">Todo</a>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    This callback is displayed as part of the updateTodo function.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">id of the current data for update</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>params</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#MutateTodoInput">MutateTodoInput</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">input param for updateTodo</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>owner</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">of the data entry logged</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line163">line 163</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    new report data
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;<a href="global.html#Todo">Todo</a>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
 
-            
     
 
     
@@ -1618,13 +1697,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_aws_lambda.html">ports/aws/lambda</a></li><li><a href="ports_http.html">ports/http</a></li><li><a href="ports_http_controllers.html">ports/http/controllers</a></li><li><a href="ports_http_routes.html">ports/http/routes</a></li><li><a href="ports_logger.html">ports/logger</a></li><li><a href="ports_state-machines.html">ports/state-machines</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Apr 02 2020 07:12:06 GMT-0300 (GMT-03:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Apr 02 2020 07:09:04 GMT-0300 (GMT-03:00)
 </footer>
 
 <script> prettyPrint(); </script>

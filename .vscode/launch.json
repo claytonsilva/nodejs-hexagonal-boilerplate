@@ -15,6 +15,17 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/dist/ports/http/bin/www.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jest Test",
+            "program": "${workspaceFolder}/node_modules/./bin/jest",
+            "args": [
+                "--runInBand",
+                "--config=${workspaceFolder}/jest.config.js"
+            ],
+            "internalConsoleOptions": "neverOpen"
         }
     ]
 }

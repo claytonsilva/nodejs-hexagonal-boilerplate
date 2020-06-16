@@ -11,7 +11,7 @@
     "start": "node dist/ports/http/bin/www",
     "test": "jest",
     "lint": "eslint -c .eslintrc src/**/*.js",
-    "doc": "jsdoc ./src/**/*.js  -d ./docs"
+    "doc": "jsdoc ./src/**/*.js  -d ./docs -c ./jsdoc.conf.json"
   },
   "jest": {
     "verbose": true

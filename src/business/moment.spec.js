@@ -1,6 +1,15 @@
-import { getDateFormated, momentWithTz, toISOString } from './moment'
+import { getDateFormated, momentWithTz, toISOString, isValidEntry } from './moment'
 
 describe('moment timezone', () => {
+  test('invalid entry', () => {
+    const localTimezone = 'America/Sao_Paulo'
+    const testDateString = 'INVALID'
+
+    expect(() => {
+      momentWithTz(testDateString, localTimezone)
+    }).toThrow(`invalid dateTime entry, got "${testDateString}"`)
+  })
+
   test('date fixed with local timezone', () => {
     const hourMinutes = 60
     const localOffset = -3
@@ -113,8 +122,18 @@ describe('moment timezone', () => {
     const localOffset = 0
 
     expect(testDateNowUTC.utcOffset()).toBe(localOffset * hourMinutes)
-    expect(testDateNowUTC.month()).toBe(testDateNowCompare.getMonth())
-    expect(testDateNowUTC.date()).toBe(testDateNowCompare.getDate())
-    expect(testDateNowUTC.year()).toBe(testDateNowCompare.getFullYear())
+    expect(testDateNowUTC.month()).toBe(testDateNowCompare.getUTCMonth())
+    expect(testDateNowUTC.date()).toBe(testDateNowCompare.getUTCDate())
+    expect(testDateNowUTC.year()).toBe(testDateNowCompare.getUTCFullYear())
+  })
+})
+
+describe('isValidEntry', () => {
+  test('invalid entry', () => {
+    expect(isValidEntry('INVALID')).toBe(false)
+  })
+
+  test('valid entry', () => {
+    expect(isValidEntry('2020-01-01')).toBe(true)
   })
 })

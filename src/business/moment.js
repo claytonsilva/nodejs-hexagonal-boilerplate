@@ -3,15 +3,26 @@ import { momentConfig } from '../config'
 import moment from 'moment'
 import 'moment-timezone'
 
+import {
+  EClassError,
+  throwCustomError,
+  // eslint-disable-next-line no-unused-vars
+  CustomError
+} from '../utils'
+
 /**
  * @description Moment with timezone local
  * @memberof business
  * @function
+ * @throws {CustomError}
  * @param  {moment.MomentInput} dta (optional) override dta if necessary
  * @param  {string} timezone (optional) overload default timezone if necessary
  * @returns {moment.Moment} moment with timezone configure
  */
 const momentWithTz = (dta, timezone = momentConfig.timezone) => {
+  if (!isValidEntry(dta)) {
+    throwCustomError(new Error(`invalid dateTime entry, got "${dta}"`), 'business.moment.momentWithTz', EClassError.INTERNAL)
+  }
   return (R.isNil(dta) ? moment() : moment(dta)).tz(timezone)
 }
 
@@ -39,6 +50,21 @@ const toISOString = (dta, timezone = momentConfig.timezone) => {
 }
 
 /**
+ * @description return if entry string is a valid iso8601 data
+ * @memberof business
+ * @function
+ * @param  {moment.Moment} dta instantiate moment object
+ * @returns {boolean} is valid?
+ */
+const isValidEntry = (dta) => {
+  if (R.not(R.isNil(dta)) &&
+    R.not(moment(dta, moment.ISO_8601).isValid())) {
+    return false
+  }
+  return true
+}
+
+/**
  * Centralizando as configurações do moment
  */
-export { momentWithTz, toISOString, getDateFormated }
+export { momentWithTz, toISOString, getDateFormated, isValidEntry }

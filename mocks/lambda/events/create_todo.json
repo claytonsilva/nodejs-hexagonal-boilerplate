@@ -1,0 +1,13 @@
+{
+	"body": "{\"message\": \"hello world\"}",
+	"resource": "/{proxy+}",
+	"arguments": {
+		"user": "testUser",
+		"data": {
+			"taskDescription": "first todo",
+			"taskStatus": "NEW",
+			"taskPriority": "LOW",
+			"taskOrder": 0
+		}
+	}
+}

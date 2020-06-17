@@ -1,0 +1,72 @@
+# Serverless packaging!
+#
+service: todo
+
+plugins:
+  - serverless-offline
+  - serverless-localstack
+  - serverless-dotenv-plugin
+  - serverless-jetpack
+custom:
+  dotenv:
+    # dot env to serve environment variables in files
+    path: .env.localstack
+    logging: false
+  localstack:
+    # localstack environment
+    # this environment can setup localstack environment on lambda functions using serverless-localstack
+    # you can use instead terraform formation for environment tests
+    stages:
+      # list of stages for which the plugin should be enabled
+      - local
+      - development
+    host: http://localhost # optional - LocalStack host to connect to
+    autostart: false # optional - start LocalStack in Docker on Serverless deploy
+    endpoints:
+      # This section is optional - can be used for customizing the target endpoints
+      S3: http://localhost:4566
+      DynamoDB: http://localhost:4566
+      CloudFormation: http://localhost:4566
+      Elasticsearch: http://localhost:4566
+      ES: http://localhost:4566
+      SNS: http://localhost:4566
+      SQS: http://localhost:4566
+      Lambda: http://localhost:4566
+      Kinesis: http://localhost:4566
+      STS: http://localhost:4566
+      IAM: http://localhost:4566
+    lambda:
+      # Enable this flag to improve performance
+      mountCode: True
+    docker:
+      # Enable this flag to run "docker ..." commands as sudo
+      sudo: False
+  stages:
+    - local
+    - dev
+provider:
+  name: aws
+  runtime: nodejs12.x
+functions:
+  todo: # A Function
+    handler: dist/ports/aws.lambda/todo.handler # The file and module for this specific function.
+    name: todo # optional, Deployed Lambda name
+    description: todo # The description of your function.
+    runtime: nodejs12.x # Runtime for this specific function. Overrides the default which is set on the provider level
+    timeout: 20 # optional, in seconds, default is 6, we recomend 10 seconds for local environment
+    package:
+      include: # Specify the directories and files which should be included in the deployment package for this specific function.
+        - dist/**
+      exclude: # Specify the directories and files which should be excluded in the deployment package for this specific function.
+        - src/**
+        - .*/**
+        - .*
+        - iaac/**
+        - mocks/**
+        - docs/**
+        - docker-compose.yml
+        - Dockerfile
+        - jest.config.js
+        - jsdoc.conf.json
+      individually: true # Enables individual packaging for specific function. If true you must provide package for each function. Defaults to false
+      excludeDevDependencies: true

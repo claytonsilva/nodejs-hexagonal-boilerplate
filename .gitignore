@@ -4,8 +4,14 @@ dist
 .env
 yarn-error.log
 .vscode/settings.json
-.terraform
+.serverless
+.localstack
+**/*/.terraform
+**/*/terraform.tfstate
+**/*/terraform.tfstate.backup
+test-results
+.scannerwork/
+reports/
 terraform.tfstate
 terraform.tfstate.backup
-coverage
-test-results
+.terraform/

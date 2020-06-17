@@ -79,7 +79,7 @@ const appConfig = {
   envName: process.env.ENV_NAME || 'staging',
   todo: {
     tableName: process.env.TODO_TABLE_NAME || 'todos',
-    queueUrl: process.env.AWS_SQS_REPORT_QUEUE_URL || 'todo'
+    queueUrl: process.env.AWS_DYNAMO_TODO_TABLE_NAME || 'todo'
   }
 }
 
@@ -135,7 +135,7 @@ export {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_aws_lambda.html">ports/aws/lambda</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li></ul>
 </nav>
 
 <br class="clear">

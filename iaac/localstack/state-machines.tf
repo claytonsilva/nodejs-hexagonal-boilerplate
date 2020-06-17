@@ -1,20 +1,3 @@
-provider "aws" {
-  # ... potentially other provider configuration ...
-  region = "us-east-1"
-
-  endpoints {
-    dynamodb = "http://localhost:4569"
-    s3       = "http://localhost:4572"
-    sqs      = "http://localhost:4576"
-  }
-
-  profile = "default"
-}
-
-locals {
-  dynamodb_table_name_todo = "todos"
-}
-
 resource "aws_dynamodb_table" "todo_data" {
   name           = "${local.dynamodb_table_name_todo}"
   read_capacity  = 5

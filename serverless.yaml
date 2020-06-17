@@ -10,7 +10,7 @@ plugins:
 custom:
   dotenv:
     # dot env to serve environment variables in files
-    path: .env.localstack
+    path: .env.dev
     logging: false
   localstack:
     # localstack environment
@@ -49,7 +49,7 @@ provider:
   runtime: nodejs12.x
 functions:
   todo: # A Function
-    handler: dist/ports/aws.lambda/todo.handler # The file and module for this specific function.
+    handler: dist/ports/aws-lambda/todo.handler # The file and module for this specific function.
     name: todo # optional, Deployed Lambda name
     description: todo # The description of your function.
     runtime: nodejs12.x # Runtime for this specific function. Overrides the default which is set on the provider level

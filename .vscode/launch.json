@@ -26,6 +26,23 @@
                 "--config=${workspaceFolder}/jest.config.js"
             ],
             "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "run on lambda port",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "outFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/node_modules/.bin/serverless",
+            "args": [
+                "offline",
+                "--env",
+                "dev"
+            ]
         }
     ]
 }

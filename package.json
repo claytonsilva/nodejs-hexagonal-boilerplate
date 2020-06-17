@@ -11,6 +11,9 @@
     "start": "node dist/ports/http/bin/www",
     "test": "jest",
     "lint": "eslint -c .eslintrc src/**/*.js",
+    "local-lambda": "serverless offline -s dev",
+    "prebuild-lambda": "yarn build",
+    "build-lambda": "serverless package",
     "doc": "jsdoc ./src/**/*.js  -d ./docs -c ./jsdoc.conf.json"
   },
   "jest": {
@@ -90,6 +93,11 @@
     "lint-staged": "^8.1.0",
     "prettier-eslint": "8.8.2",
     "rimraf": "^3.0.0",
+    "serverless": "^1.70.0",
+    "serverless-dotenv-plugin": "^2.4.2",
+    "serverless-jetpack": "^0.10.6",
+    "serverless-localstack": "^0.4.24",
+    "serverless-offline": "^6.1.5",
     "standard": "^14.3.1"
   },
   "resolutions": {
@@ -100,6 +108,7 @@
     "dd-trace": "^0.14.0",
     "mkdirp": "^1.0.3",
     "typescript": ">=2.8.0",
-    "debug": "^4.1.1"
+    "debug": "^4.1.1",
+    "yargs-parser": "^18.1.2"
   }
 }

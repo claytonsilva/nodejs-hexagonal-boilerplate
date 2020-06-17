@@ -125,7 +125,7 @@ export const updateTodo = (escriba, repository) => async (id, params, user) => {
 
     `
 
-    // send report to existing protocol previous created
+    // send report to existing todo previous created
     const task = await repository.updateDocument(
       { id },
       UpdateExpression,

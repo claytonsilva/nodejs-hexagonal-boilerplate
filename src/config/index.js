@@ -51,7 +51,7 @@ const appConfig = {
   envName: process.env.ENV_NAME || 'staging',
   todo: {
     tableName: process.env.TODO_TABLE_NAME || 'todos',
-    queueUrl: process.env.AWS_SQS_REPORT_QUEUE_URL || 'todo'
+    queueUrl: process.env.AWS_DYNAMO_TODO_TABLE_NAME || 'todo'
   }
 }
 

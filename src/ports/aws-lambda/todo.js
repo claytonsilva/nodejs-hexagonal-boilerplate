@@ -1,12 +1,12 @@
 import AWS from 'aws-sdk'
 
 import { appConfig, AWSDynamoConfig } from '../../config'
-import { adapter } from '../../adapters/'
+import { adapter } from '../../adapters'
 import { handleLogger } from '../logger/logger'
 import { databaseRepository } from '../state-machines'
 
 /**
- * Protocol handler.
+ * Todo handler.
  * more about: https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html
  *
  * @memberof ports/aws/lambda
@@ -14,8 +14,8 @@ import { databaseRepository } from '../state-machines'
  * @param {*} context information from direct call with params
  * @param {*} circuit breaker function
  */
-export const handler = async (event, context, exit) => {
-  const appName = 'protocol'
+export const handler = async (event, context) => {
+  const appName = 'todo'
   const isProduction = process.env.ENV_NAME === 'production'
   const envName = isProduction ? 'production' : 'staging'
 
@@ -27,7 +27,7 @@ export const handler = async (event, context, exit) => {
   const dynamo = new AWS.DynamoDB.DocumentClient()
 
   // inject repositories
-  const databaseRepoInstance = databaseRepository(dynamo, appConfig.report.tableName)
+  const databaseRepoInstance = databaseRepository(dynamo, appConfig.todo.tableName)
   const adapterInstance = adapter(escriba, databaseRepoInstance, null)
 
   const getTodo = async () => {

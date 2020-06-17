@@ -1,5 +1,6 @@
 {
 	"body": "{\"message\": \"hello world\"}",
+	"field": "createTodo",
 	"resource": "/{proxy+}",
 	"arguments": {
 		"user": "testUser",

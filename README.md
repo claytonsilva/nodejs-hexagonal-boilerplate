@@ -65,7 +65,7 @@ Aqui já ocorre consumo de serviços que precisam ser simulados (mock, emulador 
 
 ### Ports
 
-As bordas que dão a fama de arquitetura hexagonal, pois foi feito pra abstrair como um hexagono onde cada lado significa uma porta I/O.
+As bordas que dão a fama de arquitetura hexagonal, pois foi feito pra abstrair como um hexágono onde cada lado significa uma porta I/O.
 
 Exemplos de ports:
 

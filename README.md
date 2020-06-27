@@ -8,14 +8,14 @@
 
 ## Inspiração
 
-Inspirado em deselvolver essa arquitetura depois de acompanhar algumas palestras da Nubank, a idéia de separação de responsabilidades por camadas e modelos de testes me fez inspirar a criar um modelo em Node.js.
+Inspirado em desenvolver essa arquitetura depois de acompanhar algumas palestras da Nubank, a ideia de separação de responsabilidades por camadas e modelos de testes me fez inspirar a criar um modelo em Node.js.
 
 ## O que vem a ser? Aonde vive? Hoje no globo reporter
 
 Antes de tudo vamos no [Wikipedia](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
 Depois vamos paginar [esse slide bacana da Nubank](https://pt.slideshare.net/Nubank/arquitetura-funcional-em-microservices).
 
-## Já viu os dois? senta que la vem história
+## Já viu os dois? senta que lá vem história
 
 ![arquitetura](./hexagonal-architecture.png)
 
@@ -23,8 +23,8 @@ Vamos elencar algumas dores do desenvolvimento:
 
 * Mockar serviços ou testar neles;
 * Criar uma condição de teste com volume aceitável de cobertura, e possibilidade do seu teste evoluir
-conforme vai a experiencia de consumo do produto;
-* Projetar Tolerancia a falha;
+conforme vai a experiência de consumo do produto;
+* Projetar Tolerância a falha;
 * Saber onde deve entrar o BDD e onde entra o teste unitário; e
 * (para galera que curte o lado funcional do Javascript) criar codigo 100% puro sem ter que vender o rim.
 
@@ -33,8 +33,8 @@ conforme vai a experiencia de consumo do produto;
 * É a camada mais pura;
 * Não conversa com ninguém, somente é consumido;
 * Onde as funções DEVEM ser mais puras possíveis;
-* Não precisam de implementar injeção de dependencia;
-* Não são assincronas pois recebe tudo que precisa na entrada e devolve o objeto necessário; e
+* Não precisam de implementar injeção de dependência;
+* Não são assíncronas pois recebe tudo que precisa na entrada e devolve o objeto necessário; e
 * São fáceis de fazer teste unitário porque são puros e com entradas que se limita a Arrays e objetos.
 
 Nela deve ficar toda questão de negócios que sua solução propõe, sabemos que nessa área é onde vai ocorrer
@@ -45,9 +45,9 @@ Concentre nela os casos de uso, nela que será construído o seu negócio.
 
 ### Adapters
 
-É a cola que une as camadas externas com negócio (é voce constroller?).
+É a cola que une as camadas externas com negócio (é você controller?).
 
-Diferentemente do controller que foi projetado para arquitetura MVC e todo mundo já deixou alguma regra de negócio nele que eu sei e nao adianta mentir, ele abstrai totalmente a ideia de ponte e pode ser aplicado em **qualquer contexto** dando uma flexibilidade grande para reaproveitamento de código.
+Diferentemente do controller que foi projetado para arquitetura MVC e todo mundo já deixou alguma regra de negócio nele que eu sei e não adianta mentir, ele abstrai totalmente a ideia de ponte e pode ser aplicado em **qualquer contexto** dando uma flexibilidade grande para reaproveitamento de código.
 
 ---
 
@@ -61,11 +61,11 @@ Importante ressaltar
 
 O controller tinha responsabilidade de fazer ponte com a camada de modelo e ainda sanitizar os dados, preocupação que veremos na frente em **ports**.
 
-Aqui já ocorre consumo de serviços que precisam ser simulados (mock, emulador de serviços), então por consequência ocorre também injeção de dependência, para que a solução permita entrar com mock com vacilidade sem alterar o contexto da função. O teste unitário começa a ficar mais complicado e começa os testes de comportamento, pois no adapter você está claramente consumindo o serviço, mas consumindo de forma direta.
+Aqui já ocorre consumo de serviços que precisam ser simulados (mock, emulador de serviços), então por consequência ocorre também injeção de dependência, para que a solução permita entrar com mock com facilidade sem alterar o contexto da função. O teste unitário começa a ficar mais complicado e começa os testes de comportamento, pois no adapter você está claramente consumindo o serviço, mas consumindo de forma direta.
 
 ### Ports
 
-As bordas que dão a fama de arquitetura hexagonal, pois foi feito pra abstrair como um hexagono onde cada lado significa uma porta I/O.
+As bordas que dão a fama de arquitetura hexagonal, pois foi feito pra abstrair como um hexágono onde cada lado significa uma porta I/O.
 
 Exemplos de ports:
 
@@ -96,10 +96,10 @@ $terraform init
 $terraform plan (avalia se é isso mesmo que quer criar)
 $terraform apply
 ```
-4. instale as dependencias com `yarn install`; e
+4. instale as dependências com `yarn install`; e
 5. rode o projeto com yarn start.
 
-Irá levanar uma instancia de serviço http(Express), e seja feliz no consumo
+Irá levantar uma instância de serviço http(Express), e seja feliz no consumo
 
 ## Features desse boilerplate
 

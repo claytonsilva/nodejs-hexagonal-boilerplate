@@ -45,9 +45,9 @@ Concentre nela os casos de uso, nela que será construído o seu negócio.
 
 ### Adapters
 
-É a cola que une as camadas externas com negócio (é voce constroller?).
+É a cola que une as camadas externas com negócio (é você controller?).
 
-Diferentemente do controller que foi projetado para arquitetura MVC e todo mundo já deixou alguma regra de negócio nele que eu sei e nao adianta mentir, ele abstrai totalmente a ideia de ponte e pode ser aplicado em **qualquer contexto** dando uma flexibilidade grande para reaproveitamento de código.
+Diferentemente do controller que foi projetado para arquitetura MVC e todo mundo já deixou alguma regra de negócio nele que eu sei e não adianta mentir, ele abstrai totalmente a ideia de ponte e pode ser aplicado em **qualquer contexto** dando uma flexibilidade grande para reaproveitamento de código.
 
 ---
 
@@ -61,7 +61,7 @@ Importante ressaltar
 
 O controller tinha responsabilidade de fazer ponte com a camada de modelo e ainda sanitizar os dados, preocupação que veremos na frente em **ports**.
 
-Aqui já ocorre consumo de serviços que precisam ser simulados (mock, emulador de serviços), então por consequência ocorre também injeção de dependência, para que a solução permita entrar com mock com vacilidade sem alterar o contexto da função. O teste unitário começa a ficar mais complicado e começa os testes de comportamento, pois no adapter você está claramente consumindo o serviço, mas consumindo de forma direta.
+Aqui já ocorre consumo de serviços que precisam ser simulados (mock, emulador de serviços), então por consequência ocorre também injeção de dependência, para que a solução permita entrar com mock com facilidade sem alterar o contexto da função. O teste unitário começa a ficar mais complicado e começa os testes de comportamento, pois no adapter você está claramente consumindo o serviço, mas consumindo de forma direta.
 
 ### Ports
 

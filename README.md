@@ -33,8 +33,8 @@ conforme vai a experiência de consumo do produto;
 * É a camada mais pura;
 * Não conversa com ninguém, somente é consumido;
 * Onde as funções DEVEM ser mais puras possíveis;
-* Não precisam de implementar injeção de dependencia;
-* Não são assincronas pois recebe tudo que precisa na entrada e devolve o objeto necessário; e
+* Não precisam de implementar injeção de dependência;
+* Não são assíncronas pois recebe tudo que precisa na entrada e devolve o objeto necessário; e
 * São fáceis de fazer teste unitário porque são puros e com entradas que se limita a Arrays e objetos.
 
 Nela deve ficar toda questão de negócios que sua solução propõe, sabemos que nessa área é onde vai ocorrer

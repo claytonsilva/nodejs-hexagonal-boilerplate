@@ -15,7 +15,7 @@ Inspirado em desenvolver essa arquitetura depois de acompanhar algumas palestras
 Antes de tudo vamos no [Wikipedia](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
 Depois vamos paginar [esse slide bacana da Nubank](https://pt.slideshare.net/Nubank/arquitetura-funcional-em-microservices).
 
-## Já viu os dois? senta que la vem história
+## Já viu os dois? senta que lá vem história
 
 ![arquitetura](./hexagonal-architecture.png)
 

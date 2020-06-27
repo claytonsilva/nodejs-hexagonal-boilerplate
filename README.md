@@ -8,7 +8,7 @@
 
 ## Inspiração
 
-Inspirado em deselvolver essa arquitetura depois de acompanhar algumas palestras da Nubank, a idéia de separação de responsabilidades por camadas e modelos de testes me fez inspirar a criar um modelo em Node.js.
+Inspirado em desenvolver essa arquitetura depois de acompanhar algumas palestras da Nubank, a ideia de separação de responsabilidades por camadas e modelos de testes me fez inspirar a criar um modelo em Node.js.
 
 ## O que vem a ser? Aonde vive? Hoje no globo reporter
 

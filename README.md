@@ -23,8 +23,8 @@ Vamos elencar algumas dores do desenvolvimento:
 
 * Mockar serviços ou testar neles;
 * Criar uma condição de teste com volume aceitável de cobertura, e possibilidade do seu teste evoluir
-conforme vai a experiencia de consumo do produto;
-* Projetar Tolerancia a falha;
+conforme vai a experiência de consumo do produto;
+* Projetar Tolerância a falha;
 * Saber onde deve entrar o BDD e onde entra o teste unitário; e
 * (para galera que curte o lado funcional do Javascript) criar codigo 100% puro sem ter que vender o rim.
 

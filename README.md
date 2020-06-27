@@ -96,10 +96,10 @@ $terraform init
 $terraform plan (avalia se é isso mesmo que quer criar)
 $terraform apply
 ```
-4. instale as dependencias com `yarn install`; e
+4. instale as dependências com `yarn install`; e
 5. rode o projeto com yarn start.
 
-Irá levanar uma instancia de serviço http(Express), e seja feliz no consumo
+Irá levantar uma instância de serviço http(Express), e seja feliz no consumo
 
 ## Features desse boilerplate
 

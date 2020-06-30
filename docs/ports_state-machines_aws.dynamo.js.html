@@ -51,7 +51,7 @@ import { CustomError } from '../../utils'
  * @throws {CustomError}
  * @param {DynamoDB.DocumentClient} dynamo instance of Dynamo SDK for aws (DocumentClient)
  * @param {string} tableName name of table in DynamoDB
- * @returns {Object} Object searched from table
+ * @returns {getDocumentReturn} Object searched from table
  */
 export const getDocument = (dynamo, tableName) => async (key) => {
   try {
@@ -77,7 +77,7 @@ export const getDocument = (dynamo, tableName) => async (key) => {
  * @throws {CustomError}
  * @param {DynamoDB.DocumentClient} dynamo instance of Dynamo SDK for aws (DocumentClient)
  * @param {string} tableName name of table in DynamoDB
- * @returns {Object} Object searched from table
+ * @returns {putDocumentReturn} Object searched from table
  */
 export const putDocument = (dynamo, tableName) => async (item) => {
   try {
@@ -102,7 +102,7 @@ export const putDocument = (dynamo, tableName) => async (item) => {
  * @throws {CustomError}
  * @param {DynamoDB.DocumentClient} dynamo instance of Dynamo SDK for aws (DocumentClient)
  * @param {string} tableName name of table in DynamoDB
- * @returns {Object} Object searched from table
+ * @returns {updateDocumentReturn} Object searched from table
  */
 export const updateDocument = (dynamo, tableName) => async (key, updateExpression, expressionAttributeValues) => {
   try {
@@ -134,13 +134,14 @@ export const updateDocument = (dynamo, tableName) => async (key, updateExpressio
  * @throws {CustomError}
  * @param {DynamoDB.DocumentClient} dynamo instance of Dynamo SDK for aws (DocumentClient)
  * @param {string} tableName name of table in DynamoDB
- * @returns {Object} Object searched from table
+ * @returns {deleteDocumentReturn} Object searched from table
  */
 export const deleteDocument = (dynamo, tableName) => async (key) => {
   try {
     const params = {
       TableName: tableName,
-      Key: key
+      Key: key,
+      ReturnValues: 'ALL_OLD'
     }
 
     const result = await dynamo.delete(params).promise()
@@ -159,12 +160,49 @@ export const deleteDocument = (dynamo, tableName) => async (key) => {
  * @param {Object} obj object param in ExpressionAttributeValues
  * @returns {Object} object remaped
  */
-const remapPrevixVariables = (obj) => {
+export const remapPrevixVariables = (obj) => {
   return Object
     .keys(obj).reduce((prev, curr) => {
       return { ...prev, [`:${curr}`]: obj[curr] }
     }, {})
 }
+
+/***
+ * type definitions for complex objects
+ * this helps documentation
+ */
+
+/**
+* This callback is displayed as part of the updateDocument (inner DynamoRepositoryInstance) function.
+*
+* @callback updateDocumentReturn
+* @param {Object} key - object of keys table parameters to search
+* @param {DynamoDB.UpdateExpression} updateExpression  dynamo notation of the update document expression without values to change
+* @param {Object} expressionAttributeValues  values to be mapped in updateExpression expression
+* @returns {Object} - object sended
+*/
+
+/**
+* This callback is displayed as part of the getDocument (inner DynamoRepositoryInstance) function.
+*
+* @callback getDocumentReturn
+* @param {Object} key - object of keys table parameters to search
+* @returns {Object} - object updated from state-machine
+*/
+
+/**
+* This callback is displayed as part of the putDocument (inner DynamoRepositoryInstance) function.
+*
+* @callback putDocumentReturn
+* @param {Object} item - object to persist
+*/
+
+/**
+* This callback is displayed as part of the deleteDocument (inner DynamoRepositoryInstance) function.
+*
+* @callback deleteDocumentReturn
+* @param {Object} key - key of the data
+*/
 </code></pre>
         </article>
     </section>
@@ -175,13 +213,13 @@ const remapPrevixVariables = (obj) => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_aws_lambda.html">ports/aws/lambda</a></li><li><a href="ports_http.html">ports/http</a></li><li><a href="ports_http_controllers.html">ports/http/controllers</a></li><li><a href="ports_http_routes.html">ports/http/routes</a></li><li><a href="ports_logger.html">ports/logger</a></li><li><a href="ports_state-machines.html">ports/state-machines</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_state-machines.html">ports/state-machines</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Apr 02 2020 07:09:04 GMT-0300 (GMT-03:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a>
 </footer>
 
 <script> prettyPrint(); </script>

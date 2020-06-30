@@ -30,12 +30,13 @@
  * Reference only imports (for documentation).
  */
 // eslint-disable-next-line no-unused-vars
-import { SQS } from 'aws-sdk'
+import { SQS, AWSError } from 'aws-sdk'
+import R from 'ramda'
 /**
  * Code imports.
  */
 import { classError } from './constants'
-import { CustomError } from '../../utils'
+import { CustomError, throwCustomError } from '../../utils'
 
 /**
  * AWS SQS custom methods.
@@ -43,7 +44,6 @@ import { CustomError } from '../../utils'
  */
 
 /**
- * Get a document on table TableName in the DynamoDB.
  * @description Send the message to sqs.
  * @memberof ports/state-machines
  * @async
@@ -51,7 +51,7 @@ import { CustomError } from '../../utils'
  * @throws {CustomError}
  * @param {SQS} sqs instance of SQS sdk from aws.
  * @param {string} queueUrl url from sqs queue service from aws.
- * @returns {Promise&lt;SQS.SendMessageResult>} response from aws
+ * @returns {sendMessageReturn}
  */
 export const sendMessage = (sqs, queueUrl) => async (body) => {
   try {
@@ -65,18 +65,109 @@ export const sendMessage = (sqs, queueUrl) => async (body) => {
       throw new CustomError(
         new Error('No message id response!'),
         classError.INTERNAL,
-        'state-machines.aws.sqs.sendMessage'
+        'ports.state-machines.aws.sqs.sendMessage'
       )
     }
 
     return result
   } catch (error) {
-    if (error instanceof CustomError) {
-      throw error
-    }
-    throw new CustomError(error, classError.INTERNAL, 'state-machines.aws.sqs.sendMessage')
+    throwCustomError(error, classError.INTERNAL, 'ports.state-machines.aws.sqs.sendMessage')
   }
 }
+
+/**
+ * @description receive the messages from sqs.
+ * @memberof ports/state-machines
+ * @async
+ * @function
+ * @throws {CustomError}
+ * @param {SQS} sqs instance of SQS sdk from aws.
+ * @param {string} queueUrl url from sqs queue service from aws.
+ * @param {number} maxNumberOfMessages max messages received from call command
+ * @returns {receiveMessageReturn}
+ */
+export const receiveMessage = (sqs, queueUrl, maxNumberOfMessages) => async (visibilityTimeout, waitTimeSeconds) => {
+  try {
+    const messagesReceived = await sqs.receiveMessage({
+      QueueUrl: queueUrl,
+      VisibilityTimeout: visibilityTimeout || 20,
+      MaxNumberOfMessages: maxNumberOfMessages || 1,
+      WaitTimeSeconds: waitTimeSeconds || 10
+    }).promise()
+
+    if (R.isEmpty(messagesReceived) || R.isEmpty(messagesReceived.Messages)) {
+      throw new CustomError(new Error('No messages received'), classError.INTERNAL, 'ports.state-machines.aws.sqs.receiveMessage')
+    }
+
+    return messagesReceived.Messages
+  } catch (error) {
+    throwCustomError(error, classError.INTERNAL, 'ports.state-machines.aws.sqs.receiveMessage')
+  }
+}
+
+/**
+ * @description delete the message from sqs queue.
+ * @memberof ports/state-machines
+ * @async
+ * @function
+ * @throws {CustomError}
+ * @param {SQS} sqs instance of SQS sdk from aws.
+ * @param {string} queueUrl url from sqs queue service from aws.
+ * @returns {deleteMessageReturn}
+ */
+export const deleteMessage = (sqs, queueUrl) => async (receiptHandle) => {
+  try {
+    const params = {
+      QueueUrl: queueUrl,
+      ReceiptHandle: receiptHandle
+    }
+    const result = await sqs.deleteMessage(params).promise()
+
+    return {
+      error: result.$response.error,
+      retryCount: result.$response.retryCount,
+      requestId: result.$response.requestId
+    }
+  } catch (error) {
+    throwCustomError(error, classError.INTERNAL, 'ports.state-machines.aws.sqs.deleteMessage')
+  }
+}
+
+/**
+ * exclusive specifications docs for complex types
+ */
+
+/**
+* @typedef {Object} DeleteMessageOutput  output for deleteMessage command
+* @property {AWSError} error  error of the call if exists
+* @property {number} retryCount  number of retrys
+* @property {string} requestId  id of aws request
+*/
+
+/**
+ * This callback is displayed as part of the sendMessage function.
+ *
+ * @callback sendMessageReturn
+ * @param {Object} body  body of message
+ * @returns {Promise&lt;SQS.SendMessageResult>} response from aws
+ */
+
+/**
+ * This callback is displayed as part of the deleteMessage function.
+ *
+ * @callback deleteMessageReturn
+ * @param {string} receiptHandle  handle of the message for identify in sqs system
+ * @returns {Promise&lt;DeleteMessageOutput>} response from aws
+ */
+
+/**
+ * This callback is displayed as part of the receiveMessage function.
+ *
+ * @callback receiveMessageReturn
+ * @param {number} visibilityTimeout time in seconds when message is visible
+ * @param {number} waitTimeSeconds time in secods to wait queue for messages
+ * @returns {Promise&lt;SQS.MessageList>} response from aws
+ */
 </code></pre>
         </article>
     </section>
@@ -87,13 +178,13 @@ export const sendMessage = (sqs, queueUrl) => async (body) => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_aws_lambda.html">ports/aws/lambda</a></li><li><a href="ports_http.html">ports/http</a></li><li><a href="ports_http_controllers.html">ports/http/controllers</a></li><li><a href="ports_http_routes.html">ports/http/routes</a></li><li><a href="ports_logger.html">ports/logger</a></li><li><a href="ports_state-machines.html">ports/state-machines</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_state-machines.html">ports/state-machines</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Apr 02 2020 07:09:04 GMT-0300 (GMT-03:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a>
 </footer>
 
 <script> prettyPrint(); </script>

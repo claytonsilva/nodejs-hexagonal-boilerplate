@@ -20,10 +20,11 @@
             "type": "node",
             "request": "launch",
             "name": "Jest Test",
-            "program": "${workspaceFolder}/node_modules/./bin/jest",
+            "program": "${workspaceFolder}/node_modules/.bin/jest",
             "args": [
                 "--runInBand",
-                "--config=${workspaceFolder}/jest.config.js"
+                "--config=${workspaceFolder}/jest.config.js",
+                "--detectOpenHandles"
             ],
             "internalConsoleOptions": "neverOpen"
         },

@@ -23,7 +23,7 @@ import { CustomError } from '../../utils'
  * @throws {CustomError}
  * @param {DynamoDB.DocumentClient} dynamo instance of Dynamo SDK for aws (DocumentClient)
  * @param {string} tableName name of table in DynamoDB
- * @returns {Object} Object searched from table
+ * @returns {getDocumentReturn} Object searched from table
  */
 export const getDocument = (dynamo, tableName) => async (key) => {
   try {
@@ -49,7 +49,7 @@ export const getDocument = (dynamo, tableName) => async (key) => {
  * @throws {CustomError}
  * @param {DynamoDB.DocumentClient} dynamo instance of Dynamo SDK for aws (DocumentClient)
  * @param {string} tableName name of table in DynamoDB
- * @returns {Object} Object searched from table
+ * @returns {putDocumentReturn} Object searched from table
  */
 export const putDocument = (dynamo, tableName) => async (item) => {
   try {
@@ -74,7 +74,7 @@ export const putDocument = (dynamo, tableName) => async (item) => {
  * @throws {CustomError}
  * @param {DynamoDB.DocumentClient} dynamo instance of Dynamo SDK for aws (DocumentClient)
  * @param {string} tableName name of table in DynamoDB
- * @returns {Object} Object searched from table
+ * @returns {updateDocumentReturn} Object searched from table
  */
 export const updateDocument = (dynamo, tableName) => async (key, updateExpression, expressionAttributeValues) => {
   try {
@@ -106,13 +106,14 @@ export const updateDocument = (dynamo, tableName) => async (key, updateExpressio
  * @throws {CustomError}
  * @param {DynamoDB.DocumentClient} dynamo instance of Dynamo SDK for aws (DocumentClient)
  * @param {string} tableName name of table in DynamoDB
- * @returns {Object} Object searched from table
+ * @returns {deleteDocumentReturn} Object searched from table
  */
 export const deleteDocument = (dynamo, tableName) => async (key) => {
   try {
     const params = {
       TableName: tableName,
-      Key: key
+      Key: key,
+      ReturnValues: 'ALL_OLD'
     }
 
     const result = await dynamo.delete(params).promise()
@@ -131,9 +132,46 @@ export const deleteDocument = (dynamo, tableName) => async (key) => {
  * @param {Object} obj object param in ExpressionAttributeValues
  * @returns {Object} object remaped
  */
-const remapPrevixVariables = (obj) => {
+export const remapPrevixVariables = (obj) => {
   return Object
     .keys(obj).reduce((prev, curr) => {
       return { ...prev, [`:${curr}`]: obj[curr] }
     }, {})
 }
+
+/***
+ * type definitions for complex objects
+ * this helps documentation
+ */
+
+/**
+* This callback is displayed as part of the updateDocument (inner DynamoRepositoryInstance) function.
+*
+* @callback updateDocumentReturn
+* @param {Object} key - object of keys table parameters to search
+* @param {DynamoDB.UpdateExpression} updateExpression  dynamo notation of the update document expression without values to change
+* @param {Object} expressionAttributeValues  values to be mapped in updateExpression expression
+* @returns {Object} - object sended
+*/
+
+/**
+* This callback is displayed as part of the getDocument (inner DynamoRepositoryInstance) function.
+*
+* @callback getDocumentReturn
+* @param {Object} key - object of keys table parameters to search
+* @returns {Object} - object updated from state-machine
+*/
+
+/**
+* This callback is displayed as part of the putDocument (inner DynamoRepositoryInstance) function.
+*
+* @callback putDocumentReturn
+* @param {Object} item - object to persist
+*/
+
+/**
+* This callback is displayed as part of the deleteDocument (inner DynamoRepositoryInstance) function.
+*
+* @callback deleteDocumentReturn
+* @param {Object} key - key of the data
+*/

@@ -124,7 +124,7 @@ describe('validateUpdateTodo', () => {
   test('validate null description when update', () => {
     expect(() => {
       validateUpdateTodo(validateCaseNullDescription, defaultOriginalData, 'testUser')
-    }).toThrow('invalid entry on field data, missing information')
+    }).toThrow('invalid entry on field data, missing information about taskDescription')
   })
 
   const validateCaseNormal = {

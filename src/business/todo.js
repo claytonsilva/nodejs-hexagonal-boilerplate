@@ -30,8 +30,12 @@ import {
 export const validateCreateTodo = (data, owner) => {
   const creationDate = toISOString()
 
-  if (R.isNil(data) || R.isNil(data.taskDescription)) {
+  if (R.isEmpty(data) || R.isNil(data)) {
     return throwCustomError(new Error('invalid entry on field data, missing information'), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
+  }
+
+  if (R.isEmpty(data.taskDescription) || R.isNil(data.taskDescription)) {
+    throwCustomError(new Error('invalid entry on field data, missing information about taskDescription'), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
   }
 
   if (R.isNil(owner)) {
@@ -76,8 +80,12 @@ export const validateUpdateTodo = (data, originalData, owner) => {
     throwCustomError(new Error('no data for this id'), 'business.todo.validateUpdateTodo', EClassError.USER_ERROR)
   }
 
-  if (R.isNil(data) || R.isNil(data.taskDescription)) {
+  if (R.isEmpty(data) || R.isNil(data)) {
     throwCustomError(new Error('invalid entry on field data, missing information'), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
+  }
+
+  if (!R.isEmpty(data.taskDescription) && (data.taskDescription === null || data.taskDescription === '')) {
+    throwCustomError(new Error('invalid entry on field data, missing information about taskDescription'), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
   }
 
   if (R.isNil(owner)) {

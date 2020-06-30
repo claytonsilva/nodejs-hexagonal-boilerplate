@@ -11,11 +11,16 @@
  */
 // eslint-disable-next-line no-unused-vars
 import { DynamoDB } from 'aws-sdk'
-
+// eslint-disable-next-line no-unused-vars
+import { Moment } from 'moment'
 /**
  * library references
  */
-import { sendMessage } from './aws.sqs'
+import {
+  sendMessage, deleteMessage, receiveMessage,
+  // eslint-disable-next-line no-unused-vars
+  sendMessageReturn, deleteMessageReturn, receiveMessageReturn
+} from './aws.sqs'
 import { updateDocument, getDocument, putDocument, deleteDocument } from './aws.dynamo'
 
 /***
@@ -47,11 +52,14 @@ export const databaseRepository = (dynamo, tableName) => {
  * @function
  * @param {sqs} sqs instance of SQS
  * @param {string} queueUrl queue url string
+ * @param {number} maxNumberOfMessages max messages to collect in single call
  * @returns {QueueRepositoryInstance}
  */
-export const queueRepository = (sqs, queueUrl) => {
+export const queueRepository = (sqs, queueUrl, maxNumberOfMessages) => {
   return {
-    sendMessage: sendMessage(sqs, queueUrl)
+    sendMessage: sendMessage(sqs, queueUrl),
+    receiveMessage: receiveMessage(sqs, queueUrl, maxNumberOfMessages),
+    deleteMessage: deleteMessage(sqs, queueUrl)
   }
 }
 
@@ -61,16 +69,17 @@ export const queueRepository = (sqs, queueUrl) => {
  */
 
 /**
- * @typedef {Object} QueueRepositoryInstance
- * @property {sendMessageReturn} sendMessage function to send message to sqs (instantiated).
- */
+* @typedef {Object} PayloadValue
+* @property {string} key  unique key on tupple
+* @property {EVariableType} type  type of the key for cast operations
+* @property {string} value value of the variable in payload
+*/
 
 /**
- * This callback is displayed as part of the sendMessage (inner QueueRepositoryInstance) function.
- *
- * @callback sendMessageReturn
- * @param {Object} body - message to delivery in JSON
- * @returns {Object} - object sended
+ * @typedef {Object} QueueRepositoryInstance
+ * @property {sendMessageReturn} sendMessage function to send message to sqs (instantiated).
+ * @property {receiveMessageReturn} receiveMessage function to receive message from sqs (instantiated).
+ * @property {deleteMessageReturn} deleteMessage function to delete message from sqs (instantiated).
  */
 
 /**

@@ -57,7 +57,7 @@ import { validateUpdateTodo, validateCreateTodo, validateDeleteTodo } from '../b
  * @function
  * @throws {CustomError}
  * @param {DynamoRepositoryInstance} repository - State-machine database methods.
- * @returns {Promise&lt;getTodoReturn>} GetDocument method ready to execute.
+ * @returns {getTodoReturn} GetDocument method ready to execute.
  */
 export const getTodo = (repository) => async (id) => {
   try {
@@ -75,7 +75,7 @@ export const getTodo = (repository) => async (id) => {
  * @throws {CustomError}
  * @param {Logger} escriba instance of escriba
  * @param {DynamoRepositoryInstance} repository state-machine database methods
- * @returns {Promise&lt;createTodoReturn>} function to call createTodo direct
+ * @returns {createTodoReturn} function to call createTodo direct
  */
 export const createTodo = (escriba, repository) => async (params, user) => {
   try {
@@ -107,7 +107,7 @@ export const createTodo = (escriba, repository) => async (params, user) => {
  * @throws {CustomError}
  * @param {Logger} escriba instance of escriba
  * @param {DynamoRepositoryInstance} repository state-machine database methods
- * @returns {Promise&lt;updateTodoReturn>} function to call updateTodo direct
+ * @returns {updateTodoReturn} function to call updateTodo direct
  */
 export const updateTodo = (escriba, repository) => async (id, params, user) => {
   try {
@@ -122,7 +122,6 @@ export const updateTodo = (escriba, repository) => async (id, params, user) => {
         taskPriority = :taskPriority,
         creationData = :creationData,
         lastUpdateDate = :lastUpdateDate
-
     `
 
     // send report to existing todo previous created
@@ -154,7 +153,7 @@ export const updateTodo = (escriba, repository) => async (id, params, user) => {
  * @throws {CustomError}
  * @param {Logger} escriba instance of escriba
  * @param {DynamoRepositoryInstance} repository state-machine database methods
- * @returns {Promise&lt;deleteTodoReturn>} function to call deleteTodo direct
+ * @returns {deleteTodoReturn} function to call deleteTodo direct
  */
 export const deleteTodo = (escriba, repository) => async (id, user) => {
   try {
@@ -168,7 +167,7 @@ export const deleteTodo = (escriba, repository) => async (id, user) => {
       data: currObject
     })
 
-    return deletedDocument || currObject
+    return deletedDocument
   } catch (error) {
     throwCustomError(error, EClassError.INTERNAL, 'adapters.todo.deleteTodo')
   }
@@ -224,7 +223,7 @@ export const deleteTodo = (escriba, repository) => async (id, user) => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_state-machines.html">ports/state-machines</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
 </nav>
 
 <br class="clear">

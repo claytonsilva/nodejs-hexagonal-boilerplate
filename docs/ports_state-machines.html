@@ -101,82 +101,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id=".exports.classError"><span class="type-signature">(static, constant) </span>exports.classError<span class="type-signature"> :string</span></h4>
-
-
-
-
-<div class="description">
-    Enum for classError values.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ports_state-machines_constants.js.html">ports/state-machines/constants.js</a>, <a href="ports_state-machines_constants.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -466,7 +390,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ports_state-machines_index.js.html">ports/state-machines/index.js</a>, <a href="ports_state-machines_index.js.html#line34">line 34</a>
+        <a href="ports_state-machines_index.js.html">ports/state-machines/index.js</a>, <a href="ports_state-machines_index.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -524,7 +448,7 @@
     
 
     
-    <h4 class="name" id=".exports.deleteDocument"><span class="type-signature">(async, static) </span>exports.deleteDocument<span class="signature">(dynamo, tableName)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id=".exports.deleteDocument"><span class="type-signature">(async, static) </span>exports.deleteDocument<span class="signature">(dynamo, tableName)</span><span class="type-signature"> &rarr; {<a href="global.html#deleteDocumentReturn">deleteDocumentReturn</a>}</span></h4>
     
 
     
@@ -703,7 +627,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#deleteDocumentReturn">deleteDocumentReturn</a></span>
 
 
     </dd>
@@ -721,7 +645,200 @@
     
 
     
-    <h4 class="name" id=".exports.getDocument"><span class="type-signature">(async, static) </span>exports.getDocument<span class="signature">(dynamo, tableName)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id=".exports.deleteMessage"><span class="type-signature">(async, static) </span>exports.deleteMessage<span class="signature">(sqs, queueUrl)</span><span class="type-signature"> &rarr; {<a href="global.html#deleteMessageReturn">deleteMessageReturn</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    delete the message from sqs queue.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sqs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">SQS</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">instance of SQS sdk from aws.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>queueUrl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">url from sqs queue service from aws.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ports_state-machines_aws.sqs.js.html">ports/state-machines/aws.sqs.js</a>, <a href="ports_state-machines_aws.sqs.js.html#line90">line 90</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type"><a href="global.html#CustomError">CustomError</a></span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#deleteMessageReturn">deleteMessageReturn</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".exports.getDocument"><span class="type-signature">(async, static) </span>exports.getDocument<span class="signature">(dynamo, tableName)</span><span class="type-signature"> &rarr; {<a href="global.html#getDocumentReturn">getDocumentReturn</a>}</span></h4>
     
 
     
@@ -900,7 +1017,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#getDocumentReturn">getDocumentReturn</a></span>
 
 
     </dd>
@@ -918,7 +1035,7 @@
     
 
     
-    <h4 class="name" id=".exports.putDocument"><span class="type-signature">(async, static) </span>exports.putDocument<span class="signature">(dynamo, tableName)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id=".exports.putDocument"><span class="type-signature">(async, static) </span>exports.putDocument<span class="signature">(dynamo, tableName)</span><span class="type-signature"> &rarr; {<a href="global.html#putDocumentReturn">putDocumentReturn</a>}</span></h4>
     
 
     
@@ -1097,7 +1214,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#putDocumentReturn">putDocumentReturn</a></span>
 
 
     </dd>
@@ -1115,7 +1232,7 @@
     
 
     
-    <h4 class="name" id=".exports.queueRepository"><span class="type-signature">(static) </span>exports.queueRepository<span class="signature">(sqs, queueUrl)</span><span class="type-signature"> &rarr; {<a href="global.html#QueueRepositoryInstance">QueueRepositoryInstance</a>}</span></h4>
+    <h4 class="name" id=".exports.queueRepository"><span class="type-signature">(static) </span>exports.queueRepository<span class="signature">(sqs, queueUrl, maxNumberOfMessages)</span><span class="type-signature"> &rarr; {<a href="global.html#QueueRepositoryInstance">QueueRepositoryInstance</a>}</span></h4>
     
 
     
@@ -1202,6 +1319,29 @@
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>maxNumberOfMessages</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">max messages to collect in single call</td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -1239,7 +1379,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ports_state-machines_index.js.html">ports/state-machines/index.js</a>, <a href="ports_state-machines_index.js.html#line52">line 52</a>
+        <a href="ports_state-machines_index.js.html">ports/state-machines/index.js</a>, <a href="ports_state-machines_index.js.html#line58">line 58</a>
     </li></ul></dd>
     
 
@@ -1293,7 +1433,223 @@
     
 
     
-    <h4 class="name" id=".exports.sendMessage"><span class="type-signature">(async, static) </span>exports.sendMessage<span class="signature">(sqs, queueUrl)</span><span class="type-signature"> &rarr; {Promise.&lt;SQS.SendMessageResult>}</span></h4>
+    <h4 class="name" id=".exports.receiveMessage"><span class="type-signature">(async, static) </span>exports.receiveMessage<span class="signature">(sqs, queueUrl, maxNumberOfMessages)</span><span class="type-signature"> &rarr; {<a href="global.html#receiveMessageReturn">receiveMessageReturn</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    receive the messages from sqs.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sqs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">SQS</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">instance of SQS sdk from aws.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>queueUrl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">url from sqs queue service from aws.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxNumberOfMessages</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">max messages received from call command</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ports_state-machines_aws.sqs.js.html">ports/state-machines/aws.sqs.js</a>, <a href="ports_state-machines_aws.sqs.js.html#line61">line 61</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type"><a href="global.html#CustomError">CustomError</a></span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#receiveMessageReturn">receiveMessageReturn</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".exports.sendMessage"><span class="type-signature">(async, static) </span>exports.sendMessage<span class="signature">(sqs, queueUrl)</span><span class="type-signature"> &rarr; {<a href="global.html#sendMessageReturn">sendMessageReturn</a>}</span></h4>
     
 
     
@@ -1460,10 +1816,6 @@
 <h5>Returns:</h5>
 
         
-<div class="param-desc">
-    response from aws
-</div>
-
 
 
 <dl>
@@ -1472,7 +1824,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;SQS.SendMessageResult></span>
+<span class="param-type"><a href="global.html#sendMessageReturn">sendMessageReturn</a></span>
 
 
     </dd>
@@ -1490,7 +1842,7 @@
     
 
     
-    <h4 class="name" id=".exports.updateDocument"><span class="type-signature">(async, static) </span>exports.updateDocument<span class="signature">(dynamo, tableName)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id=".exports.updateDocument"><span class="type-signature">(async, static) </span>exports.updateDocument<span class="signature">(dynamo, tableName)</span><span class="type-signature"> &rarr; {<a href="global.html#updateDocumentReturn">updateDocumentReturn</a>}</span></h4>
     
 
     
@@ -1669,7 +2021,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#updateDocumentReturn">updateDocumentReturn</a></span>
 
 
     </dd>
@@ -1697,13 +2049,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_aws_lambda.html">ports/aws/lambda</a></li><li><a href="ports_http.html">ports/http</a></li><li><a href="ports_http_controllers.html">ports/http/controllers</a></li><li><a href="ports_http_routes.html">ports/http/routes</a></li><li><a href="ports_logger.html">ports/logger</a></li><li><a href="ports_state-machines.html">ports/state-machines</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_state-machines.html">ports/state-machines</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Apr 02 2020 07:09:04 GMT-0300 (GMT-03:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a>
 </footer>
 
 <script> prettyPrint(); </script>

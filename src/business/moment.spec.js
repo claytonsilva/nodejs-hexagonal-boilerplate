@@ -1,6 +1,16 @@
 import { getDateFormated, momentWithTz, toISOString, isValidEntry } from './moment'
+import { EClassError } from '../utils'
+import { throwCustomError } from '../utils/errors'
+
+/** mock error generation to validate signature */
+jest.mock('../utils/errors')
+
+throwCustomError.mockImplementation((error) => {
+  throw error
+})
 
 describe('moment timezone', () => {
+  const methodPath = 'business.moment.momentWithTz'
   test('invalid entry', () => {
     const localTimezone = 'America/Sao_Paulo'
     const testDateString = 'INVALID'
@@ -8,6 +18,8 @@ describe('moment timezone', () => {
     expect(() => {
       momentWithTz(testDateString, localTimezone)
     }).toThrow(`invalid dateTime entry, got "${testDateString}"`)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(`invalid dateTime entry, got "${testDateString}"`), methodPath, EClassError.INTERNAL)
   })
 
   test('date fixed with local timezone', () => {

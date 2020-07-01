@@ -34,14 +34,13 @@
  * @description this namespace is a configuration of the project
  */
 
-import { config } from 'dotenv'
 import R from 'ramda'
-config()
 
 const AWSConfig = {
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_ACCESS_SECRET_KEY,
-  region: process.env.AWS_REGION
+  region: process.env.AWS_REGION,
+  profile: process.env.AWS_PROFILE
 }
 
 const AWSDynamoConfig = R.merge(
@@ -56,7 +55,7 @@ const AWSDynamoConfig = R.merge(
 const AWSSqsConfig = R.merge(
   AWSConfig,
   {
-    region: process.env.AWS_SQS_REGION || 'us-west-2',
+    region: process.env.AWS_SQS_REGION,
     apiVersion: process.env.AWS_SQS_APIVERSION || '2012-11-05'
   }
 )
@@ -64,7 +63,7 @@ const AWSSqsConfig = R.merge(
 const AWSS3Config = R.merge(
   AWSConfig,
   {
-    region: process.env.AWS_SQS_REGION || 'us-west-2',
+    region: process.env.AWS_SQS_REGION,
     apiVersion: process.env.AWS_S3_APIVERSION || '2006-03-01'
   }
 )
@@ -73,10 +72,12 @@ const momentConfig = {
   timezone: process.env.TIMEZONE || 'America/Sao_Paulo'
 }
 
+const envProdName = 'production'
+
 const appConfig = {
   appName: process.env.APP_NAME || 'hexagonal-boilerplate',
-  isProduction: process.env.ENV_NAME === 'production',
-  envName: process.env.ENV_NAME || 'staging',
+  isProduction: process.env.NODE_ENV === envProdName,
+  envName: process.env.NODE_ENV,
   todo: {
     tableName: process.env.TODO_TABLE_NAME || 'todos',
     queueUrl: process.env.AWS_DYNAMO_TODO_TABLE_NAME || 'todo'
@@ -105,7 +106,7 @@ const escribaConf = {
         }
       }
     },
-    'categories': {
+    categories: {
       default: {
         appenders: [
           'out'
@@ -123,6 +124,7 @@ export {
   AWSS3Config,
   AWSSqsConfig,
   escribaConf,
+  envProdName,
   momentConfig
 }
 </code></pre>
@@ -135,7 +137,7 @@ export {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_state-machines.html">ports/state-machines</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_http.html">ports/http</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
 </nav>
 
 <br class="clear">

@@ -36,7 +36,7 @@ import R from 'ramda'
  * Code imports.
  */
 import { classError } from './constants'
-import { CustomError, throwCustomError } from '../../utils'
+import { throwCustomError } from '../../utils'
 
 /**
  * AWS SQS custom methods.
@@ -54,6 +54,7 @@ import { CustomError, throwCustomError } from '../../utils'
  * @returns {sendMessageReturn}
  */
 export const sendMessage = (sqs, queueUrl) => async (body) => {
+  const methodPath = 'ports.state-machines.aws.sqs.sendMessage'
   try {
     const params = {
       QueueUrl: queueUrl,
@@ -62,16 +63,16 @@ export const sendMessage = (sqs, queueUrl) => async (body) => {
     const result = await sqs.sendMessage(params).promise()
 
     if (typeof result.MessageId === 'undefined') {
-      throw new CustomError(
-        new Error('No message id response!'),
-        classError.INTERNAL,
-        'ports.state-machines.aws.sqs.sendMessage'
-      )
+      throw new Error('No message id response!')
     }
 
     return result
-  } catch (error) {
-    throwCustomError(error, classError.INTERNAL, 'ports.state-machines.aws.sqs.sendMessage')
+  } catch (rejectResponse) {
+    if (rejectResponse instanceof Error) {
+      throwCustomError(rejectResponse, methodPath, classError.INTERNAL)
+    } else {
+      throwCustomError(new Error(`${rejectResponse.$response.error.code}: ${rejectResponse.$response.error.message}`), methodPath, classError.INTERNAL)
+    }
   }
 }
 
@@ -87,6 +88,7 @@ export const sendMessage = (sqs, queueUrl) => async (body) => {
  * @returns {receiveMessageReturn}
  */
 export const receiveMessage = (sqs, queueUrl, maxNumberOfMessages) => async (visibilityTimeout, waitTimeSeconds) => {
+  const methodPath = 'ports.state-machines.aws.sqs.receiveMessage'
   try {
     const messagesReceived = await sqs.receiveMessage({
       QueueUrl: queueUrl,
@@ -96,12 +98,16 @@ export const receiveMessage = (sqs, queueUrl, maxNumberOfMessages) => async (vis
     }).promise()
 
     if (R.isEmpty(messagesReceived) || R.isEmpty(messagesReceived.Messages)) {
-      throw new CustomError(new Error('No messages received'), classError.INTERNAL, 'ports.state-machines.aws.sqs.receiveMessage')
+      throw new Error('No messages received')
     }
 
     return messagesReceived.Messages
-  } catch (error) {
-    throwCustomError(error, classError.INTERNAL, 'ports.state-machines.aws.sqs.receiveMessage')
+  } catch (rejectResponse) {
+    if (rejectResponse instanceof Error) {
+      throwCustomError(rejectResponse, methodPath, classError.INTERNAL)
+    } else {
+      throwCustomError(new Error(`${rejectResponse.$response.error.code}: ${rejectResponse.$response.error.message}`), methodPath, classError.INTERNAL)
+    }
   }
 }
 
@@ -116,6 +122,8 @@ export const receiveMessage = (sqs, queueUrl, maxNumberOfMessages) => async (vis
  * @returns {deleteMessageReturn}
  */
 export const deleteMessage = (sqs, queueUrl) => async (receiptHandle) => {
+  const methodPath = 'ports.state-machines.aws.sqs.deleteMessage'
+
   try {
     const params = {
       QueueUrl: queueUrl,
@@ -128,8 +136,12 @@ export const deleteMessage = (sqs, queueUrl) => async (receiptHandle) => {
       retryCount: result.$response.retryCount,
       requestId: result.$response.requestId
     }
-  } catch (error) {
-    throwCustomError(error, classError.INTERNAL, 'ports.state-machines.aws.sqs.deleteMessage')
+  } catch (rejectResponse) {
+    if (rejectResponse instanceof Error) {
+      throwCustomError(rejectResponse, methodPath, classError.INTERNAL)
+    } else {
+      throwCustomError(new Error(`${rejectResponse.$response.error.code}: ${rejectResponse.$response.error.message}`), methodPath, classError.INTERNAL)
+    }
   }
 }
 
@@ -178,7 +190,7 @@ export const deleteMessage = (sqs, queueUrl) => async (receiptHandle) => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_state-machines.html">ports/state-machines</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_http.html">ports/http</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
 </nav>
 
 <br class="clear">

@@ -36,8 +36,8 @@ import { DynamoDB } from 'aws-sdk'
  * Code imports.
  */
 import { classError } from './constants'
-import { CustomError } from '../../utils'
-
+import { throwCustomError } from '../../utils'
+import R from 'ramda'
 /**
  * AWS DynamoDB custom methods.
  */
@@ -62,9 +62,9 @@ export const getDocument = (dynamo, tableName) => async (key) => {
 
     const result = await dynamo.get(params).promise()
 
-    return result &amp;&amp; result.Item ? result.Item : null
+    return (R.not(R.isEmpty(result)) &amp;&amp; R.not(R.isNil(result)) &amp;&amp; R.not(R.isNil(result.Item))) ? result.Item : null
   } catch (error) {
-    throw new CustomError(error, classError.INTERNAL, 'state-machines.aws.dynamo.getDocument')
+    throwCustomError(error, 'state-machines.aws.dynamo.getDocument', classError.INTERNAL)
   }
 }
 
@@ -89,7 +89,7 @@ export const putDocument = (dynamo, tableName) => async (item) => {
 
     return params.Item
   } catch (error) {
-    throw new CustomError(error, classError.INTERNAL, 'state-machines.aws.dynamo.putDocument')
+    throwCustomError(error, 'state-machines.aws.dynamo.putDocument', classError.INTERNAL)
   }
 }
 
@@ -121,7 +121,7 @@ export const updateDocument = (dynamo, tableName) => async (key, updateExpressio
 
     return output.Attributes
   } catch (error) {
-    throw new CustomError(error, classError.INTERNAL, 'state-machines.aws.dynamo.updateDocument')
+    throwCustomError(error, 'state-machines.aws.dynamo.updateDocument', classError.INTERNAL)
   }
 }
 
@@ -146,9 +146,9 @@ export const deleteDocument = (dynamo, tableName) => async (key) => {
 
     const result = await dynamo.delete(params).promise()
 
-    return result &amp;&amp; result.Item ? result.Item : null
+    return (R.not(R.isEmpty(result)) &amp;&amp; R.not(R.isNil(result)) &amp;&amp; R.not(R.isNil(result.Item))) ? result.Item : null
   } catch (error) {
-    throw new CustomError(error, classError.INTERNAL, 'state-machines.aws.dynamo.getDocument')
+    throwCustomError(error, 'state-machines.aws.dynamo.deleteDocument', classError.INTERNAL)
   }
 }
 
@@ -213,7 +213,7 @@ export const remapPrevixVariables = (obj) => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_state-machines.html">ports/state-machines</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_http.html">ports/http</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
 </nav>
 
 <br class="clear">

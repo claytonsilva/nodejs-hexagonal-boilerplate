@@ -29,25 +29,26 @@ import {
  */
 export const validateCreateTodo = (data, owner) => {
   const creationDate = toISOString()
+  const methodPath = 'business.todo.validateCreateTodo'
 
   if (R.isEmpty(data) || R.isNil(data)) {
-    return throwCustomError(new Error('invalid entry on field data, missing information'), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error('invalid entry on field data, missing information'), methodPath, EClassError.USER_ERROR)
   }
 
   if (R.isEmpty(data.taskDescription) || R.isNil(data.taskDescription)) {
-    throwCustomError(new Error('invalid entry on field data, missing information about taskDescription'), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error('invalid entry on field data, missing information about taskDescription'), methodPath, EClassError.USER_ERROR)
   }
 
   if (R.isNil(owner)) {
-    return throwCustomError(new Error('owner is missing'), 'business.todo.validateCreasteTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error('owner is missing'), methodPath, EClassError.USER_ERROR)
   }
 
   if ((R.not(R.isNil(data.taskPriority)) && R.not(Object.values(EPriority).includes(data.taskPriority)))) {
-    return throwCustomError(new Error(`invalid value for priority: got ${data.taskPriority}`), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error(`invalid value for priority: got ${data.taskPriority}`), methodPath, EClassError.USER_ERROR)
   }
 
   if ((R.not(R.isNil(data.taskStatus)) && R.not(Object.values(ETodoStatus).includes(data.taskStatus)))) {
-    return throwCustomError(new Error(`invalid value for status: got ${data.taskStatus}`), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error(`invalid value for status: got ${data.taskStatus}`), methodPath, EClassError.USER_ERROR)
   }
 
   return {
@@ -75,29 +76,30 @@ export const validateCreateTodo = (data, owner) => {
    */
 export const validateUpdateTodo = (data, originalData, owner) => {
   const lastUpdateDate = toISOString()
+  const methodPath = 'business.todo.validateUpdateTodo'
 
   if (R.isNil(originalData)) {
-    throwCustomError(new Error('no data for this id'), 'business.todo.validateUpdateTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error('no data for this id'), methodPath, EClassError.USER_ERROR)
   }
 
   if (R.isEmpty(data) || R.isNil(data)) {
-    throwCustomError(new Error('invalid entry on field data, missing information'), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error('invalid entry on field data, missing information'), methodPath, EClassError.USER_ERROR)
   }
 
   if (!R.isEmpty(data.taskDescription) && (data.taskDescription === null || data.taskDescription === '')) {
-    throwCustomError(new Error('invalid entry on field data, missing information about taskDescription'), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error('invalid entry on field data, missing information about taskDescription'), methodPath, EClassError.USER_ERROR)
   }
 
   if (R.isNil(owner)) {
-    throwCustomError(new Error('owner is missing'), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error('owner is missing'), methodPath, EClassError.USER_ERROR)
   }
 
   if ((R.not(R.isNil(data.taskPriority)) && R.not(Object.values(EPriority).includes(data.taskPriority)))) {
-    throwCustomError(new Error(`invalid value for priority: got ${data.taskPriority}`), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error(`invalid value for priority: got ${data.taskPriority}`), methodPath, EClassError.USER_ERROR)
   }
 
   if ((R.not(R.isNil(data.taskStatus)) && R.not(Object.values(ETodoStatus).includes(data.taskStatus)))) {
-    throwCustomError(new Error(`invalid value for status: got ${data.taskStatus}`), 'business.todo.validateCreateTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error(`invalid value for status: got ${data.taskStatus}`), methodPath, EClassError.USER_ERROR)
   }
 
   return ['taskOwner', 'id']
@@ -121,12 +123,13 @@ export const validateUpdateTodo = (data, originalData, owner) => {
    * @returns {Todo}
    */
 export const validateDeleteTodo = (originalData, owner) => {
+  const methodPath = 'business.todo.validateDeleteTodo'
   if (R.isNil(originalData)) {
-    throwCustomError(new Error('no data for this id'), 'business.todo.validateDeleteTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error('no data for this id'), methodPath, EClassError.USER_ERROR)
   }
 
   if (R.isNil(owner)) {
-    throwCustomError(new Error('owner is missing'), 'business.todo.validateDeleteTodo', EClassError.USER_ERROR)
+    throwCustomError(new Error('owner is missing'), methodPath, EClassError.USER_ERROR)
   }
 
   return originalData

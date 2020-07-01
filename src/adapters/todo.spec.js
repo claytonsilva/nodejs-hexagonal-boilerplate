@@ -5,6 +5,15 @@ import { validateUpdateTodo } from '../business/todo'
 import moment from 'moment'
 import R from 'ramda'
 import { v4 as uuidv4 } from 'uuid'
+import { EClassError } from '../utils'
+import { throwCustomError } from '../utils/errors'
+
+/** mock error generation to validate signature */
+jest.mock('../utils/errors')
+
+throwCustomError.mockImplementation((error) => {
+  throw error
+})
 
 /**
  * this adapter will mock all methods from aws.dynamo port
@@ -34,6 +43,7 @@ const repositoryMock = {
 const adapterInstiated = adapter(escribaMock, repositoryMock)
 
 describe('getTodo', () => {
+  const methodPath = 'adapters.todo.getTodo'
   beforeEach(() => {
     getDocument.mockReset()
   })
@@ -68,16 +78,19 @@ describe('getTodo', () => {
   })
 
   test('throw error', async () => {
-    const getDocumentErrorMock = (args) => jest.fn().mockRejectedValue(new Error('invalid id'))
+    const throwMessage = 'invalid id'
+    const getDocumentErrorMock = (args) => jest.fn().mockRejectedValue(new Error(throwMessage))
     repositoryMock.getDocument.mockImplementationOnce((args) => getDocumentErrorMock(args)())
-
-    await expect(adapterInstiated.getTodo(newId)).rejects.toThrow('invalid id')
+    await expect(adapterInstiated.getTodo(newId)).rejects.toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.INTERNAL)
     expect(getDocument).toHaveBeenCalled()
     expect(getDocument).toHaveBeenLastCalledWith({ id: newId })
   })
 })
 
 describe('createTodo', () => {
+  const methodPath = 'adapters.todo.createTodo'
   beforeEach(() => {
     putDocument.mockReset()
   })
@@ -104,28 +117,30 @@ describe('createTodo', () => {
     expect(escribaMock.info).toHaveBeenCalled()
     expect(escribaMock.info).toHaveBeenCalledWith({
       action: 'TASK_CREATED',
-      method: 'adapters.todo.createTodo',
+      method: methodPath,
       data: { documentInserted: insertedData }
     })
   })
 
   test('throw error', async () => {
-    const putDocumentErrorMock = (args) => jest.fn().mockRejectedValue(new Error('invalid data'))
+    const throwMessage = 'invalid data'
+    const putDocumentErrorMock = (args) => jest.fn().mockRejectedValue(new Error(throwMessage))
     repositoryMock.putDocument.mockImplementationOnce((args) => putDocumentErrorMock(args)())
-
-    await expect(adapterInstiated.createTodo(newData, 'owner')).rejects.toThrow('invalid data')
+    await expect(adapterInstiated.createTodo(newData, 'owner')).rejects.toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.INTERNAL)
     expect(putDocument).toHaveBeenCalled()
   })
 
   test('throw error with invalid data (business validation)', async () => {
     repositoryMock.putDocument.mockImplementationOnce((args) => putDocumentMock(args)())
-
     await expect(adapterInstiated.createTodo({}, 'owner')).rejects.toThrow()
     expect(putDocument).not.toHaveBeenCalled()
   })
 })
 
 describe('updateTodo', () => {
+  const methodPath = 'adapters.todo.updateTodo'
   beforeEach(() => {
     updateDocument.mockReset()
     getDocument.mockReset()
@@ -169,17 +184,20 @@ describe('updateTodo', () => {
     expect(escribaMock.info).toHaveBeenCalled()
     expect(escribaMock.info).toHaveBeenCalledWith({
       action: 'TASK_UPDATED',
-      method: 'adapters.todo.updateTodo',
+      method: methodPath,
       data: updatedTodo
     })
   })
 
   test('throw error', async () => {
-    const updateDocumentMockError = (key, updateExpression, expressionAttributeValues) => jest.fn().mockRejectedValue(new Error('invalid data'))
+    const throwMessage = 'invalid data'
+    const updateDocumentMockError = (key, updateExpression, expressionAttributeValues) => jest.fn().mockRejectedValue(new Error(throwMessage))
     repositoryMock.updateDocument.mockImplementationOnce((key, updateExpression, expressionAttributeValues) => updateDocumentMockError(key, updateExpression, expressionAttributeValues)())
     repositoryMock.getDocument.mockImplementationOnce(getDocumentMock)
 
     await expect(adapterInstiated.updateTodo(newData.id, updatedData, 'ownerUpdateError')).rejects.toThrow()
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.INTERNAL)
     expect(updateDocument).toHaveBeenCalled()
   })
 
@@ -193,6 +211,7 @@ describe('updateTodo', () => {
 })
 
 describe('deleteTodo', () => {
+  const methodPath = 'adapters.todo.deleteTodo'
   beforeEach(() => {
     deleteDocument.mockReset()
   })
@@ -221,17 +240,20 @@ describe('deleteTodo', () => {
     expect(escribaMock.info).toHaveBeenCalled()
     expect(escribaMock.info).toHaveBeenCalledWith({
       action: 'TASK_DELETED',
-      method: 'adapters.todo.deleteTodo',
+      method: methodPath,
       data: deletedTodo
     })
   })
 
   test('throw error', async () => {
-    const deleteDocumentErrorMock = (args) => jest.fn().mockRejectedValue(new Error('invalid id'))
+    const throwMessage = 'invalid id'
+    const deleteDocumentErrorMock = (args) => jest.fn().mockRejectedValue(new Error(throwMessage))
     repositoryMock.deleteDocument.mockImplementationOnce((args) => deleteDocumentErrorMock(args)())
     repositoryMock.getDocument.mockImplementationOnce(getDocumentMock)
 
     await expect(adapterInstiated.deleteTodo(newData.id, 'deleteOwner')).rejects.toThrow()
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.INTERNAL)
     expect(getDocument).toHaveBeenCalled()
     expect(getDocument).toHaveBeenCalledWith({ id: newData.id })
   })

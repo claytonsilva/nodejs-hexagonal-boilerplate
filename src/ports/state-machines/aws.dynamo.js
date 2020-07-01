@@ -8,8 +8,8 @@ import { DynamoDB } from 'aws-sdk'
  * Code imports.
  */
 import { classError } from './constants'
-import { CustomError } from '../../utils'
-
+import { throwCustomError } from '../../utils'
+import R from 'ramda'
 /**
  * AWS DynamoDB custom methods.
  */
@@ -34,9 +34,9 @@ export const getDocument = (dynamo, tableName) => async (key) => {
 
     const result = await dynamo.get(params).promise()
 
-    return result && result.Item ? result.Item : null
+    return (R.not(R.isEmpty(result)) && R.not(R.isNil(result)) && R.not(R.isNil(result.Item))) ? result.Item : null
   } catch (error) {
-    throw new CustomError(error, classError.INTERNAL, 'state-machines.aws.dynamo.getDocument')
+    throwCustomError(error, 'state-machines.aws.dynamo.getDocument', classError.INTERNAL)
   }
 }
 
@@ -61,7 +61,7 @@ export const putDocument = (dynamo, tableName) => async (item) => {
 
     return params.Item
   } catch (error) {
-    throw new CustomError(error, classError.INTERNAL, 'state-machines.aws.dynamo.putDocument')
+    throwCustomError(error, 'state-machines.aws.dynamo.putDocument', classError.INTERNAL)
   }
 }
 
@@ -93,7 +93,7 @@ export const updateDocument = (dynamo, tableName) => async (key, updateExpressio
 
     return output.Attributes
   } catch (error) {
-    throw new CustomError(error, classError.INTERNAL, 'state-machines.aws.dynamo.updateDocument')
+    throwCustomError(error, 'state-machines.aws.dynamo.updateDocument', classError.INTERNAL)
   }
 }
 
@@ -118,9 +118,9 @@ export const deleteDocument = (dynamo, tableName) => async (key) => {
 
     const result = await dynamo.delete(params).promise()
 
-    return result && result.Item ? result.Item : null
+    return (R.not(R.isEmpty(result)) && R.not(R.isNil(result)) && R.not(R.isNil(result.Item))) ? result.Item : null
   } catch (error) {
-    throw new CustomError(error, classError.INTERNAL, 'state-machines.aws.dynamo.getDocument')
+    throwCustomError(error, 'state-machines.aws.dynamo.deleteDocument', classError.INTERNAL)
   }
 }
 

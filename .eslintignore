@@ -2,3 +2,4 @@ dist
 node_modules
 commitlint.config.js
 jest.config.js
+stryker.conf.js

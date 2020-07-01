@@ -14,6 +14,7 @@
     "local-lambda": "serverless offline -s dev",
     "prebuild-lambda": "yarn build",
     "build-lambda": "serverless package",
+    "stryker-mutate": "stryker run",
     "doc": "jsdoc ./src/**/*.js  -d ./docs -c ./jsdoc.conf.json"
   },
   "jest": {
@@ -52,7 +53,6 @@
     "body-parser": "^1.19.0",
     "cuid": "^2.1.8",
     "debug": "^4.1.1",
-    "dotenv": "^8.2.0",
     "escriba": "^2.5.0",
     "express": "^4.17.1",
     "log4js": "^5.1.0",
@@ -67,6 +67,9 @@
     "@babel/preset-env": "^7.2.3",
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
+    "@stryker-mutator/core": "^3.2.4",
+    "@stryker-mutator/javascript-mutator": "^3.2.4",
+    "@stryker-mutator/jest-runner": "^3.2.4",
     "@types/body-parser": "^1.17.1",
     "@types/express": "^4.17.2",
     "@types/jest": "^25.1.4",
@@ -76,6 +79,7 @@
     "babel-jest": "^25.1.0",
     "commitlint": "^7.2.1",
     "depcheck": "^0.9.2",
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-fp": "2.3.0",

@@ -8,7 +8,7 @@ import R from 'ramda'
  * Code imports.
  */
 import { classError } from './constants'
-import { CustomError, throwCustomError } from '../../utils'
+import { throwCustomError } from '../../utils'
 
 /**
  * AWS SQS custom methods.
@@ -26,6 +26,7 @@ import { CustomError, throwCustomError } from '../../utils'
  * @returns {sendMessageReturn}
  */
 export const sendMessage = (sqs, queueUrl) => async (body) => {
+  const methodPath = 'ports.state-machines.aws.sqs.sendMessage'
   try {
     const params = {
       QueueUrl: queueUrl,
@@ -34,16 +35,16 @@ export const sendMessage = (sqs, queueUrl) => async (body) => {
     const result = await sqs.sendMessage(params).promise()
 
     if (typeof result.MessageId === 'undefined') {
-      throw new CustomError(
-        new Error('No message id response!'),
-        classError.INTERNAL,
-        'ports.state-machines.aws.sqs.sendMessage'
-      )
+      throw new Error('No message id response!')
     }
 
     return result
-  } catch (error) {
-    throwCustomError(error, classError.INTERNAL, 'ports.state-machines.aws.sqs.sendMessage')
+  } catch (rejectResponse) {
+    if (rejectResponse instanceof Error) {
+      throwCustomError(rejectResponse, methodPath, classError.INTERNAL)
+    } else {
+      throwCustomError(new Error(`${rejectResponse.$response.error.code}: ${rejectResponse.$response.error.message}`), methodPath, classError.INTERNAL)
+    }
   }
 }
 
@@ -59,6 +60,7 @@ export const sendMessage = (sqs, queueUrl) => async (body) => {
  * @returns {receiveMessageReturn}
  */
 export const receiveMessage = (sqs, queueUrl, maxNumberOfMessages) => async (visibilityTimeout, waitTimeSeconds) => {
+  const methodPath = 'ports.state-machines.aws.sqs.receiveMessage'
   try {
     const messagesReceived = await sqs.receiveMessage({
       QueueUrl: queueUrl,
@@ -68,12 +70,16 @@ export const receiveMessage = (sqs, queueUrl, maxNumberOfMessages) => async (vis
     }).promise()
 
     if (R.isEmpty(messagesReceived) || R.isEmpty(messagesReceived.Messages)) {
-      throw new CustomError(new Error('No messages received'), classError.INTERNAL, 'ports.state-machines.aws.sqs.receiveMessage')
+      throw new Error('No messages received')
     }
 
     return messagesReceived.Messages
-  } catch (error) {
-    throwCustomError(error, classError.INTERNAL, 'ports.state-machines.aws.sqs.receiveMessage')
+  } catch (rejectResponse) {
+    if (rejectResponse instanceof Error) {
+      throwCustomError(rejectResponse, methodPath, classError.INTERNAL)
+    } else {
+      throwCustomError(new Error(`${rejectResponse.$response.error.code}: ${rejectResponse.$response.error.message}`), methodPath, classError.INTERNAL)
+    }
   }
 }
 
@@ -88,6 +94,8 @@ export const receiveMessage = (sqs, queueUrl, maxNumberOfMessages) => async (vis
  * @returns {deleteMessageReturn}
  */
 export const deleteMessage = (sqs, queueUrl) => async (receiptHandle) => {
+  const methodPath = 'ports.state-machines.aws.sqs.deleteMessage'
+
   try {
     const params = {
       QueueUrl: queueUrl,
@@ -100,8 +108,12 @@ export const deleteMessage = (sqs, queueUrl) => async (receiptHandle) => {
       retryCount: result.$response.retryCount,
       requestId: result.$response.requestId
     }
-  } catch (error) {
-    throwCustomError(error, classError.INTERNAL, 'ports.state-machines.aws.sqs.deleteMessage')
+  } catch (rejectResponse) {
+    if (rejectResponse instanceof Error) {
+      throwCustomError(rejectResponse, methodPath, classError.INTERNAL)
+    } else {
+      throwCustomError(new Error(`${rejectResponse.$response.error.code}: ${rejectResponse.$response.error.message}`), methodPath, classError.INTERNAL)
+    }
   }
 }
 

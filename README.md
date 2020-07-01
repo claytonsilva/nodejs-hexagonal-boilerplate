@@ -1,6 +1,7 @@
 # Boilerplate de Arquitetura Hexagonal
 
 [![Coverage Status](https://coveralls.io/repos/github/claytonsilva/nodejs-hexagonal-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/claytonsilva/nodejs-hexagonal-boilerplate?branch=master)
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fclaytonsilva%2Fnodejs-hexagonal-boilerplate%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/claytonsilva/nodejs-hexagonal-boilerplate/master)
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Conventional Changelog](https://img.shields.io/badge/changelog-conventional-brightgreen.svg)](http://conventional-changelog.github.io)
 [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version)

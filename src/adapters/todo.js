@@ -32,10 +32,11 @@ import { validateUpdateTodo, validateCreateTodo, validateDeleteTodo } from '../b
  * @returns {getTodoReturn} GetDocument method ready to execute.
  */
 export const getTodo = (repository) => async (id) => {
+  const methodPath = 'adapters.todo.getTodo'
   try {
     return await repository.getDocument({ id })
   } catch (error) {
-    throw new CustomError(error, EClassError.INTERNAL, 'adapters.todo.getTodo')
+    throwCustomError(error, methodPath, EClassError.INTERNAL)
   }
 }
 
@@ -50,6 +51,7 @@ export const getTodo = (repository) => async (id) => {
  * @returns {createTodoReturn} function to call createTodo direct
  */
 export const createTodo = (escriba, repository) => async (params, user) => {
+  const methodPath = 'adapters.todo.createTodo'
   try {
     const documentInserted = await repository
       .putDocument(
@@ -61,13 +63,13 @@ export const createTodo = (escriba, repository) => async (params, user) => {
 
     escriba.info({
       action: 'TASK_CREATED',
-      method: 'adapters.todo.createTodo',
+      method: methodPath,
       data: { documentInserted }
     })
 
     return documentInserted
   } catch (error) {
-    throwCustomError(error, EClassError.INTERNAL, 'adapters.todo.createTodo')
+    throwCustomError(error, methodPath, EClassError.INTERNAL)
   }
 }
 
@@ -82,6 +84,7 @@ export const createTodo = (escriba, repository) => async (params, user) => {
  * @returns {updateTodoReturn} function to call updateTodo direct
  */
 export const updateTodo = (escriba, repository) => async (id, params, user) => {
+  const methodPath = 'adapters.todo.updateTodo'
   try {
     const currObject = await getTodo(repository)(id)
 
@@ -95,7 +98,6 @@ export const updateTodo = (escriba, repository) => async (id, params, user) => {
         creationData = :creationData,
         lastUpdateDate = :lastUpdateDate
     `
-
     // send report to existing todo previous created
     const task = await repository.updateDocument(
       { id },
@@ -106,14 +108,14 @@ export const updateTodo = (escriba, repository) => async (id, params, user) => {
     // log report data
     escriba.info({
       action: 'TASK_UPDATED',
-      method: 'adapters.todo.updateTodo',
+      method: methodPath,
       data: task
     })
 
     // return updated item
     return task
   } catch (error) {
-    throwCustomError(error, EClassError.INTERNAL, 'adapters.todo.updateTodo')
+    throwCustomError(error, methodPath, EClassError.INTERNAL)
   }
 }
 
@@ -128,6 +130,7 @@ export const updateTodo = (escriba, repository) => async (id, params, user) => {
  * @returns {deleteTodoReturn} function to call deleteTodo direct
  */
 export const deleteTodo = (escriba, repository) => async (id, user) => {
+  const methodPath = 'adapters.todo.deleteTodo'
   try {
     const currObject = validateDeleteTodo(await getTodo(repository)(id), user)
     const deletedDocument = await repository.deleteDocument({ id })
@@ -135,13 +138,13 @@ export const deleteTodo = (escriba, repository) => async (id, user) => {
     // log report data
     escriba.info({
       action: 'TASK_DELETED',
-      method: 'adapters.todo.deleteTodo',
+      method: methodPath,
       data: currObject
     })
 
     return deletedDocument
   } catch (error) {
-    throwCustomError(error, EClassError.INTERNAL, 'adapters.todo.deleteTodo')
+    throwCustomError(error, methodPath, EClassError.INTERNAL)
   }
 }
 

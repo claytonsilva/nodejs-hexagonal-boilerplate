@@ -6,7 +6,6 @@
  * @description this namespace is part of port http
  */
 
-import { config } from 'dotenv'
 import express from 'express'
 import bodyParser from 'body-parser'
 import { config as AWSConfig, DynamoDB } from 'aws-sdk'
@@ -15,8 +14,6 @@ import { adapter } from '../../adapters'
 import { appConfig, AWSDynamoConfig } from '../../config'
 import { getRoutes } from './routes/index'
 import { handleLogger } from '../logger'
-
-config()
 
 // Setting app
 const _app = express()

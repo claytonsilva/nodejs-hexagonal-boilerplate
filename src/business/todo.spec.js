@@ -1,7 +1,17 @@
 import { EPriority, ETodoStatus } from './constants'
 import { validateCreateTodo, validateUpdateTodo, validateDeleteTodo } from './todo'
+import { EClassError } from '../utils'
+import { throwCustomError } from '../utils/errors'
+
+/** mock error generation to validate signature */
+jest.mock('../utils/errors')
+
+throwCustomError.mockImplementation((error) => {
+  throw error
+})
 
 describe('validateCreateTodo', () => {
+  const methodPath = 'business.todo.validateCreateTodo'
   const validateCaseDefault = {
     taskDescription: 'test'
   }
@@ -23,9 +33,12 @@ describe('validateCreateTodo', () => {
   }
 
   test('validate invalid taskPriority', () => {
+    const throwMessage = `invalid value for priority: got ${validateCasePriorityInvalid.taskPriority}`
     expect(() => {
       validateCreateTodo(validateCasePriorityInvalid, 'testUser')
-    }).toThrow(`invalid value for priority: got ${validateCasePriorityInvalid.taskPriority}`)
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
   const validateCaseStatusInvalid = {
@@ -35,9 +48,12 @@ describe('validateCreateTodo', () => {
   }
 
   test('validate invalid taskStatus on create', () => {
+    const throwMessage = `invalid value for status: got ${validateCaseStatusInvalid.taskStatus}`
     expect(() => {
       validateCreateTodo(validateCaseStatusInvalid, 'testUser')
-    }).toThrow(`invalid value for status: got ${validateCaseStatusInvalid.taskStatus}`)
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
   const validateNullDescription = {
@@ -45,27 +61,37 @@ describe('validateCreateTodo', () => {
   }
 
   test('validate null description on create', () => {
+    const throwMessage = 'invalid entry on field data, missing information about taskDescription'
     expect(() => {
       validateCreateTodo(validateNullDescription, 'testUser')
-    }).toThrow('invalid entry on field data, missing information')
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
   const validateNullData = null
 
   test('validate null data on create', () => {
+    const throwMessage = 'invalid entry on field data, missing information'
     expect(() => {
       validateCreateTodo(validateNullData, 'testUser')
-    }).toThrow('invalid entry on field data, missing information')
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
   test('validate null user on create', () => {
+    const throwMessage = 'owner is missing'
     expect(() => {
       validateCreateTodo(validateCaseDefault)
-    }).toThrow('owner is missing')
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 })
 
 describe('validateUpdateTodo', () => {
+  const methodPath = 'business.todo.validateUpdateTodo'
   const defaultOriginalData = validateCreateTodo({
     taskPriority: EPriority.HIGH,
     taskDescription: 'updateDefault'
@@ -77,15 +103,21 @@ describe('validateUpdateTodo', () => {
   }
 
   test('validate null user on update', () => {
+    const throwMessage = 'owner is missing'
     expect(() => {
       validateUpdateTodo(validateCaseDefaultUpdate, defaultOriginalData)
-    }).toThrow('owner is missing')
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
   test('validate null originalData on update', () => {
+    const throwMessage = 'no data for this id'
     expect(() => {
       validateUpdateTodo(validateCaseDefaultUpdate)
-    }).toThrow('no data for this id')
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
   const validateCasePriorityInvalid = {
@@ -94,9 +126,12 @@ describe('validateUpdateTodo', () => {
   }
 
   test('validate invalid taskPriority on update', () => {
+    const throwMessage = `invalid value for priority: got ${validateCasePriorityInvalid.taskPriority}`
     expect(() => {
       validateUpdateTodo(validateCasePriorityInvalid, defaultOriginalData, 'testUser')
-    }).toThrow(`invalid value for priority: got ${validateCasePriorityInvalid.taskPriority}`)
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
   const validateCaseStatusInvalid = {
@@ -105,15 +140,21 @@ describe('validateUpdateTodo', () => {
   }
 
   test('validate invalid taskStatus on update', () => {
+    const throwMessage = `invalid value for status: got ${validateCaseStatusInvalid.taskStatus}`
     expect(() => {
       validateUpdateTodo(validateCaseStatusInvalid, defaultOriginalData, 'testUser')
-    }).toThrow(`invalid value for status: got ${validateCaseStatusInvalid.taskStatus}`)
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
   test('validate data when is null for update', () => {
+    const throwMessage = 'invalid entry on field data, missing information'
     expect(() => {
       validateUpdateTodo(null, defaultOriginalData, 'testUser')
-    }).toThrow('invalid entry on field data, missing information')
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
   const validateCaseNullDescription = {
@@ -122,9 +163,12 @@ describe('validateUpdateTodo', () => {
   }
 
   test('validate null description when update', () => {
+    const throwMessage = 'invalid entry on field data, missing information about taskDescription'
     expect(() => {
       validateUpdateTodo(validateCaseNullDescription, defaultOriginalData, 'testUser')
-    }).toThrow('invalid entry on field data, missing information about taskDescription')
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
   const validateCaseNormal = {
@@ -135,34 +179,46 @@ describe('validateUpdateTodo', () => {
   }
 
   test('validate normal update', () => {
-    expect(validateUpdateTodo(validateCaseNormal, defaultOriginalData, 'testUser'))
+    const updatedData = validateUpdateTodo(validateCaseNormal, defaultOriginalData, 'testUser')
+    expect(updatedData)
       .toMatchObject({
         taskDescription: 'new description',
         taskStatus: ETodoStatus.IN_PROGRESS,
         taskPriority: EPriority.MODERATE
       })
 
-    expect(validateUpdateTodo(validateCaseNormal, defaultOriginalData, 'testUser').lastUpdateDate)
+    expect(updatedData.lastUpdateDate)
       .not.toBe(null)
+    expect(updatedData)
+      .not.toHaveProperty('taskOwner')
+    expect(updatedData)
+      .not.toHaveProperty('id')
   })
 })
 
 describe('validateDeleteTodo', () => {
+  const methodPath = 'business.todo.validateDeleteTodo'
   const defaultOriginalData = validateCreateTodo({
     taskPriority: EPriority.HIGH,
     taskDescription: 'deleteDefault'
   }, 'owner')
 
   test('validate null user on delete', () => {
+    const throwMessage = 'owner is missing'
     expect(() => {
       validateDeleteTodo(defaultOriginalData)
-    }).toThrow('owner is missing')
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
   test('validate null originalData on update', () => {
+    const throwMessage = 'no data for this id'
     expect(() => {
       validateDeleteTodo(null, 'deleteUser')
-    }).toThrow('no data for this id')
+    }).toThrow(throwMessage)
+    // throws correct message
+    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
   test('validate normal delete', () => {

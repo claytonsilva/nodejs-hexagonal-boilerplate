@@ -304,6 +304,199 @@
     
 
     
+    <h4 class="name" id=".exports.validateCreateTodo"><span class="type-signature">(static) </span>exports.validateCreateTodo<span class="signature">(data, owner)</span><span class="type-signature"> &rarr; {<a href="global.html#Todo">Todo</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Validate a Todo event on creation
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Todo">Todo</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">imput data for create task</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>owner</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">owner of the task</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="business_todo.js.html">business/todo.js</a>, <a href="business_todo.js.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type"><a href="global.html#CustomError">CustomError</a></span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#Todo">Todo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id=".exports.validateDeleteTodo"><span class="type-signature">(static) </span>exports.validateDeleteTodo<span class="signature">(originalData, owner)</span><span class="type-signature"> &rarr; {<a href="global.html#Todo">Todo</a>}</span></h4>
     
 
@@ -428,7 +621,200 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="business_todo.js.html">business/todo.js</a>, <a href="business_todo.js.html#line123">line 123</a>
+        <a href="business_todo.js.html">business/todo.js</a>, <a href="business_todo.js.html#line125">line 125</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type"><a href="global.html#CustomError">CustomError</a></span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#Todo">Todo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".exports.validateDeleteTodo"><span class="type-signature">(static) </span>exports.validateDeleteTodo<span class="signature">(originalData, owner)</span><span class="type-signature"> &rarr; {<a href="global.html#Todo">Todo</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Validate a Todo event on delete
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>originalData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Todo">Todo</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">current task data</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>owner</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">owner of the task</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="business_todo.js.html">business/todo.js</a>, <a href="business_todo.js.html#line125">line 125</a>
     </li></ul></dd>
     
 
@@ -644,7 +1030,223 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="business_todo.js.html">business/todo.js</a>, <a href="business_todo.js.html#line76">line 76</a>
+        <a href="business_todo.js.html">business/todo.js</a>, <a href="business_todo.js.html#line77">line 77</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type"><a href="global.html#CustomError">CustomError</a></span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#MutateTodoOutput">MutateTodoOutput</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".exports.validateUpdateTodo"><span class="type-signature">(static) </span>exports.validateUpdateTodo<span class="signature">(data, originalData, owner)</span><span class="type-signature"> &rarr; {<a href="global.html#MutateTodoOutput">MutateTodoOutput</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Validate a Todo event on update
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#MutateTodoInput">MutateTodoInput</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">update task input</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>originalData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Todo">Todo</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">current task data</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>owner</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">owner of the task</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="business_todo.js.html">business/todo.js</a>, <a href="business_todo.js.html#line77">line 77</a>
     </li></ul></dd>
     
 
@@ -1420,7 +2022,7 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_state-machines.html">ports/state-machines</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_http.html">ports/http</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
 </nav>
 
 <br class="clear">

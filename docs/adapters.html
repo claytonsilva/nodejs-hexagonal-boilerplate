@@ -111,7 +111,7 @@
     
 
     
-    <h4 class="name" id=".exports.createTodo"><span class="type-signature">(async, static) </span>exports.createTodo<span class="signature">(escriba, repository)</span><span class="type-signature"> &rarr; {createTodoReturn}</span></h4>
+    <h4 class="name" id=".createTodo"><span class="type-signature">(async, static) </span>createTodo<span class="signature">(escriba, repository)</span><span class="type-signature"> &rarr; {createTodoReturn}</span></h4>
     
 
     
@@ -235,7 +235,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line53">line 53</a>
+        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line70">line 70</a>
     </li></ul></dd>
     
 
@@ -308,7 +308,7 @@
     
 
     
-    <h4 class="name" id=".exports.deleteTodo"><span class="type-signature">(async, static) </span>exports.deleteTodo<span class="signature">(escriba, repository)</span><span class="type-signature"> &rarr; {deleteTodoReturn}</span></h4>
+    <h4 class="name" id=".deleteTodo"><span class="type-signature">(async, static) </span>deleteTodo<span class="signature">(escriba, repository)</span><span class="type-signature"> &rarr; {deleteTodoReturn}</span></h4>
     
 
     
@@ -432,7 +432,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line132">line 132</a>
+        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line148">line 148</a>
     </li></ul></dd>
     
 
@@ -505,7 +505,7 @@
     
 
     
-    <h4 class="name" id=".exports.getTodo"><span class="type-signature">(async, static) </span>exports.getTodo<span class="signature">(repository)</span><span class="type-signature"> &rarr; {getTodoReturn}</span></h4>
+    <h4 class="name" id=".getTodo"><span class="type-signature">(async, static) </span>getTodo<span class="signature">(repository)</span><span class="type-signature"> &rarr; {getTodoReturn}</span></h4>
     
 
     
@@ -606,7 +606,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line34">line 34</a>
+        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -679,7 +679,189 @@
     
 
     
-    <h4 class="name" id=".exports.updateTodo"><span class="type-signature">(async, static) </span>exports.updateTodo<span class="signature">(escriba, repository)</span><span class="type-signature"> &rarr; {updateTodoReturn}</span></h4>
+    <h4 class="name" id=".todoAdapterFactory"><span class="type-signature">(static) </span>todoAdapterFactory<span class="signature">(escriba, repository)</span><span class="type-signature"> &rarr; {<a href="global.html#TodoAdapter">TodoAdapter</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Todo adapter factory
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>escriba</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Logger</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">instance of escriba logger</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>repository</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">DynamoRepositoryInstance</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">state-machine database methods</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    todo adapter instantied
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#TodoAdapter">TodoAdapter</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".updateTodo"><span class="type-signature">(async, static) </span>updateTodo<span class="signature">(escriba, repository)</span><span class="type-signature"> &rarr; {updateTodoReturn}</span></h4>
     
 
     
@@ -803,7 +985,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line86">line 86</a>
+        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line103">line 103</a>
     </li></ul></dd>
     
 
@@ -1006,7 +1188,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line156">line 156</a>
+        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line180">line 180</a>
     </li></ul></dd>
     
 
@@ -1188,7 +1370,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line175">line 175</a>
+        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line199">line 199</a>
     </li></ul></dd>
     
 
@@ -1347,7 +1529,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line184">line 184</a>
+        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line208">line 208</a>
     </li></ul></dd>
     
 
@@ -1552,7 +1734,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line165">line 165</a>
+        <a href="adapters_todo.js.html">adapters/todo.js</a>, <a href="adapters_todo.js.html#line189">line 189</a>
     </li></ul></dd>
     
 
@@ -1618,7 +1800,7 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">

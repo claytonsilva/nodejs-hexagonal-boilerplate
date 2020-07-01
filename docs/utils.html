@@ -176,9 +176,21 @@
 
 
         
-            
-<h4 class="name" id=".exports.throwCustomError"><span class="type-signature">(static, constant) </span>exports.throwCustomError<span class="type-signature"></span></h4>
+    
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".exports.throwCustomError"><span class="type-signature">(static) </span>exports.throwCustomError<span class="signature">(err, methodPath, classError)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    
+
+    
 
 
 
@@ -188,6 +200,107 @@ of the structure business -> adapter -> ports with correct CustomError
 if the error is typeof CustomError
 </div>
 
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>err</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Error</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">inherited error class</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>methodPath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">method origin of the error</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>classError</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">class of error from our code</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -223,7 +336,7 @@ if the error is typeof CustomError
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_errors.js.html">utils/errors.js</a>, <a href="utils_errors.js.html#line61">line 61</a>
+        <a href="utils_errors.js.html">utils/errors.js</a>, <a href="utils_errors.js.html#line62">line 62</a>
     </li></ul></dd>
     
 
@@ -239,9 +352,39 @@ if the error is typeof CustomError
 
 
 
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
         
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">undefined</span>
+
+
+    </dd>
+</dl>
+
     
 
+
+
+
+
+        
     
 
     
@@ -257,7 +400,7 @@ if the error is typeof CustomError
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">

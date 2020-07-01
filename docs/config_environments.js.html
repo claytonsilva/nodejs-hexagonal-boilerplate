@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: business/constants.js</title>
+    <title>JSDoc: Source: config/environments.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: business/constants.js</h1>
+    <h1 class="page-title">Source: config/environments.js</h1>
 
     
 
@@ -27,31 +27,13 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Enum for ETodoStatus values.
- * @readonly
- * @memberof business
- * @enum {string}
+ * get environment variable
+ * @memberof config
+ * @param {string} env environment variable name
+ * @param {string} [defaultValue=''] default value
+ * @returns {string} environment variable value
  */
-export const ETodoStatus = {
-  NEW: 'NEW',
-  IN_PROGRESS: 'IN_PROGRESS',
-  WAITING_TRANSMISSION: 'WAITING_TRANSMISSION',
-  CLOSED: 'CLOSED',
-  CANCELED: 'CANCELED'
-}
-
-/**
- * Enum for EPriority values.
- * @readonly
- * @memberof business
- * @enum {string}
- */
-export const EPriority = {
-  LOW: 'LOW',
-  MODERATE: 'MODERATE',
-  HIGH: 'HIGH',
-  URGENT: 'URGENT'
-}
+export const getEnv = (env, defaultValue = '') => process.env[env] || defaultValue
 </code></pre>
         </article>
     </section>

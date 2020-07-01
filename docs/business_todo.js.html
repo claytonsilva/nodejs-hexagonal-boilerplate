@@ -114,23 +114,11 @@ export const validateUpdateTodo = (data, originalData, owner) => {
     throwCustomError(new Error('invalid entry on field data, missing information'), methodPath, EClassError.USER_ERROR)
   }
 
-  if (!R.isEmpty(data.taskDescription) &amp;&amp; (data.taskDescription === null || data.taskDescription === '')) {
-    throwCustomError(new Error('invalid entry on field data, missing information about taskDescription'), methodPath, EClassError.USER_ERROR)
-  }
-
   if (R.isNil(owner)) {
     throwCustomError(new Error('owner is missing'), methodPath, EClassError.USER_ERROR)
   }
 
-  if ((R.not(R.isNil(data.taskPriority)) &amp;&amp; R.not(Object.values(EPriority).includes(data.taskPriority)))) {
-    throwCustomError(new Error(`invalid value for priority: got ${data.taskPriority}`), methodPath, EClassError.USER_ERROR)
-  }
-
-  if ((R.not(R.isNil(data.taskStatus)) &amp;&amp; R.not(Object.values(ETodoStatus).includes(data.taskStatus)))) {
-    throwCustomError(new Error(`invalid value for status: got ${data.taskStatus}`), methodPath, EClassError.USER_ERROR)
-  }
-
-  return ['taskOwner', 'id']
+  return ['taskOwner', 'id', 'creationDate']
     .reduce(
       (reducedData, field) => R.dissoc(field, reducedData),
       {
@@ -172,7 +160,7 @@ export const validateDeleteTodo = (originalData, owner) => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">

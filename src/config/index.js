@@ -5,9 +5,15 @@
  *
  * @description this namespace is a configuration of the project
  */
+// eslint-disable-next-line no-unused-vars
+import { Configuration as Log4jsConf } from 'log4js'
 
 import R from 'ramda'
 
+/**
+ * general aws configuration
+ * @memberof config
+ */
 const AWSConfig = {
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_ACCESS_SECRET_KEY,
@@ -15,6 +21,10 @@ const AWSConfig = {
   profile: process.env.AWS_PROFILE
 }
 
+/**
+ * aws dynamodb configuration
+ * @memberof config
+ */
 const AWSDynamoConfig = R.merge(
   AWSConfig,
   {
@@ -24,6 +34,10 @@ const AWSDynamoConfig = R.merge(
   }
 )
 
+/**
+ * aws sqs configuration
+ * @memberof config
+ */
 const AWSSqsConfig = R.merge(
   AWSConfig,
   {
@@ -32,6 +46,10 @@ const AWSSqsConfig = R.merge(
   }
 )
 
+/**
+ * aws s3 configuration
+ * @memberof config
+ */
 const AWSS3Config = R.merge(
   AWSConfig,
   {
@@ -40,12 +58,20 @@ const AWSS3Config = R.merge(
   }
 )
 
+/**
+ * moment configuration
+ * @memberof config
+ */
 const momentConfig = {
   timezone: process.env.TIMEZONE || 'America/Sao_Paulo'
 }
 
 const envProdName = 'production'
 
+/**
+ * general application configuration
+ * @memberof config
+ */
 const appConfig = {
   appName: process.env.APP_NAME || 'hexagonal-boilerplate',
   isProduction: process.env.NODE_ENV === envProdName,

@@ -5,6 +5,8 @@
  *
  * @description this namespace is part of port http (controller section)
  */
+// eslint-disable-next-line no-unused-vars
+import { Request, Response, NextFunction } from 'express'
 
 export { createTodo, deleteTodo, getTodo, updateTodo } from './todo.controller'
 
@@ -17,9 +19,9 @@ export { createTodo, deleteTodo, getTodo, updateTodo } from './todo.controller'
  * This callback is displayed as part of the controllers function.
  *
  * @memberof ports/http/controllers
- * @callback controllerTodoReturn
+ * @callback ControllerTodoReturn<T>
  * @param {Request} request from api in express port
  * @param {Response} _res response to send to caller
  * @param {NextFunction} next method to call in middlewares architecture
- * @returns {Promise<Report>} Report.
+ * @returns {Promise<T>} Report.
  */

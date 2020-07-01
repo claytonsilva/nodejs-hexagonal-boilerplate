@@ -33,7 +33,7 @@ export const handler = async (event, context) => {
   const getTodo = async () => {
     try {
       const { id } = event.arguments
-      const result = await adapterInstance.getTodo(id)
+      const result = await adapterInstance.todo.getTodo(id)
       escriba.info('handler.get', `Get the task: ${id}`)
       return result
     } catch (error) {

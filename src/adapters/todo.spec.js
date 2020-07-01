@@ -1,5 +1,5 @@
 import { getDocument, putDocument, updateDocument, deleteDocument } from '../ports/state-machines/aws.dynamo'
-import { adapter } from './index'
+import todoAdapterFactory from './todo'
 import { ETodoStatus, EPriority } from '../business/constants'
 import { validateUpdateTodo } from '../business/todo'
 import moment from 'moment'
@@ -15,21 +15,15 @@ throwCustomError.mockImplementation((error) => {
   throw error
 })
 
-/**
- * this adapter will mock all methods from aws.dynamo port
- */
+// this adapter will mock all methods from aws.dynamo port
 jest.mock('../ports/state-machines/aws.dynamo')
 
-/**
- * mock escriba calls
- */
+// mock escriba calls
 const escribaMock = {
   info: jest.fn((args) => (args)).mockReturnValue(undefined)
 }
 
-/**
- * mock repository structure to test your elements
- */
+// mock repository structure to test your elements
 const repositoryMock = {
   getDocument,
   putDocument,
@@ -37,10 +31,8 @@ const repositoryMock = {
   deleteDocument
 }
 
-/**
- * mock instantiated adapter
- */
-const adapterInstiated = adapter(escribaMock, repositoryMock)
+// mock instantiated adapter
+const adapterInstiated = todoAdapterFactory(escribaMock, repositoryMock)
 
 describe('getTodo', () => {
   const methodPath = 'adapters.todo.getTodo'
@@ -176,7 +168,6 @@ describe('updateTodo', () => {
         taskDescription = :taskDescription,
         taskStatus = :taskStatus,
         taskPriority = :taskPriority,
-        creationData = :creationData,
         lastUpdateDate = :lastUpdateDate
     `
     expect(updateDocument).toHaveBeenCalled()

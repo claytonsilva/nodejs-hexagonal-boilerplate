@@ -38,10 +38,8 @@ import { ETodoStatus, EPriority } from './constants'
 
 /**
 * @typedef {Object} MutateTodoOutput  object to input in mutations
-* @property {number} taskOrder  order of activity
 * @property {string} taskDescription description of taks
 * @property {ETodoStatus} taskStatus status of report
 * @property {EPriority} taskPriority priority of report
-* @property {string} creationDate datetime of creation
 * @property {string} lastUpdateDate datetime of the last update
 */

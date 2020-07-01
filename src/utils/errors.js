@@ -53,6 +53,7 @@ export const EClassError = {
  * of the structure business -> adapter -> ports with correct CustomError
  * if the error is typeof CustomError
  * @memberof utils
+ * @function
  * @param {Error} err inherited error class
  * @param {string} methodPath  method origin of the error
  * @param {string} classError class of error from our code

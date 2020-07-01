@@ -51,6 +51,23 @@ import {
 import { validateUpdateTodo, validateCreateTodo, validateDeleteTodo } from '../business/todo'
 
 /**
+ * @description Todo adapter factory
+ * @memberof adapters
+ * @function
+ * @param {Logger} escriba instance of escriba logger
+ * @param {DynamoRepositoryInstance} repository state-machine database methods
+ * @returns {TodoAdapter} todo adapter instantied
+ */
+const todoAdapterFactory = (escriba, repository) => ({
+  getTodo: getTodo(repository),
+  createTodo: createTodo(escriba, repository),
+  updateTodo: updateTodo(escriba, repository),
+  deleteTodo: deleteTodo(escriba, repository)
+})
+
+export default todoAdapterFactory
+
+/**
  * @description Handler function to get todo data by id .
  * @memberof adapters
  * @async
@@ -59,7 +76,7 @@ import { validateUpdateTodo, validateCreateTodo, validateDeleteTodo } from '../b
  * @param {DynamoRepositoryInstance} repository - State-machine database methods.
  * @returns {getTodoReturn} GetDocument method ready to execute.
  */
-export const getTodo = (repository) => async (id) => {
+const getTodo = (repository) => async (id) => {
   const methodPath = 'adapters.todo.getTodo'
   try {
     return await repository.getDocument({ id })
@@ -78,7 +95,7 @@ export const getTodo = (repository) => async (id) => {
  * @param {DynamoRepositoryInstance} repository state-machine database methods
  * @returns {createTodoReturn} function to call createTodo direct
  */
-export const createTodo = (escriba, repository) => async (params, user) => {
+const createTodo = (escriba, repository) => async (params, user) => {
   const methodPath = 'adapters.todo.createTodo'
   try {
     const documentInserted = await repository
@@ -111,7 +128,7 @@ export const createTodo = (escriba, repository) => async (params, user) => {
  * @param {DynamoRepositoryInstance} repository state-machine database methods
  * @returns {updateTodoReturn} function to call updateTodo direct
  */
-export const updateTodo = (escriba, repository) => async (id, params, user) => {
+const updateTodo = (escriba, repository) => async (id, params, user) => {
   const methodPath = 'adapters.todo.updateTodo'
   try {
     const currObject = await getTodo(repository)(id)
@@ -123,7 +140,6 @@ export const updateTodo = (escriba, repository) => async (id, params, user) => {
         taskDescription = :taskDescription,
         taskStatus = :taskStatus,
         taskPriority = :taskPriority,
-        creationData = :creationData,
         lastUpdateDate = :lastUpdateDate
     `
     // send report to existing todo previous created
@@ -157,11 +173,11 @@ export const updateTodo = (escriba, repository) => async (id, params, user) => {
  * @param {DynamoRepositoryInstance} repository state-machine database methods
  * @returns {deleteTodoReturn} function to call deleteTodo direct
  */
-export const deleteTodo = (escriba, repository) => async (id, user) => {
+const deleteTodo = (escriba, repository) => async (id, user) => {
   const methodPath = 'adapters.todo.deleteTodo'
   try {
     const currObject = validateDeleteTodo(await getTodo(repository)(id), user)
-    const deletedDocument = await repository.deleteDocument({ id })
+    await repository.deleteDocument({ id })
 
     // log report data
     escriba.info({
@@ -170,7 +186,7 @@ export const deleteTodo = (escriba, repository) => async (id, user) => {
       data: currObject
     })
 
-    return deletedDocument
+    return currObject
   } catch (error) {
     throwCustomError(error, methodPath, EClassError.INTERNAL)
   }
@@ -179,6 +195,14 @@ export const deleteTodo = (escriba, repository) => async (id, user) => {
 /**
  * complex callbacks documentation
  *
+ */
+
+/**
+ * @typedef {Object} TodoAdapter
+ * @property {getTodoReturn} getTodo function to get task by id (instantied)
+ * @property {createTodoReturn} createTodo function to generate task (instantiated).
+ * @property {updateTodoReturn} updateTodo function to update task  (instantiated).
+ * @property {deleteTodoReturn} deleteTodo function to delete task (instantiated).
  */
 
 /**
@@ -226,7 +250,7 @@ export const deleteTodo = (escriba, repository) => async (id, user) => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_http.html">ports/http</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adapterInstiated">adapterInstiated</a></li><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#escribaMock">escribaMock</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li><li><a href="global.html#randomString">randomString</a></li><li><a href="global.html#repositoryMock">repositoryMock</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">

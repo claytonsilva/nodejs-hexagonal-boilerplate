@@ -6,7 +6,7 @@ jobs:
   build-and-test:
     executor:
       name: node/default
-      tag: "12.18.0"
+      tag: "12.18.1"
     steps:
       - run: sudo apt-get update
       - run: sudo apt-get install -y tzdata

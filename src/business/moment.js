@@ -1,7 +1,9 @@
+// eslint-disable-next-line no-unused-vars
+import { Moment, MomentInput } from 'moment'
+// Code imports
 import R from 'ramda'
 import { momentConfig } from '../config'
-import moment from 'moment'
-import 'moment-timezone'
+import moment from 'moment-timezone/builds/moment-timezone-with-data'
 
 import {
   EClassError,
@@ -15,9 +17,9 @@ import {
  * @memberof business
  * @function
  * @throws {CustomError}
- * @param  {moment.MomentInput} dta (optional) override dta if necessary
+ * @param  {MomentInput} dta (optional) override dta if necessary
  * @param  {string} timezone (optional) overload default timezone if necessary
- * @returns {moment.Moment} moment with timezone configure
+ * @returns {Moment} moment with timezone configure
  */
 const momentWithTz = (dta, timezone = momentConfig.timezone) => {
   if (!isValidEntry(dta)) {
@@ -30,7 +32,7 @@ const momentWithTz = (dta, timezone = momentConfig.timezone) => {
  * @description Get the current time formated with 'YYYYMMDDHHmm'
  * @memberof business
  * @function
- * @param  {moment.Moment} dta instantiate moment object
+ * @param  {Moment} dta instantiate moment object
  * @returns {string} String datetime with format.
  */
 const getDateFormated = (dta) => {
@@ -41,7 +43,7 @@ const getDateFormated = (dta) => {
  * @description Moment with timezone local in iso8601
  * @memberof business
  * @function
- * @param  {moment.Moment} dta (optional) moment instance for overload "new moment()" if necessary
+ * @param  {Moment} dta (optional) moment instance for overload "new moment()" if necessary
  * @param  {string} timezone (optional) overload default timezone if necessary
  * @returns {string} iso8601 string datetime with timezone defined
  */
@@ -53,7 +55,7 @@ const toISOString = (dta, timezone = momentConfig.timezone) => {
  * @description return if entry string is a valid iso8601 data
  * @memberof business
  * @function
- * @param  {moment.Moment} dta instantiate moment object
+ * @param  {Moment} dta instantiate moment object
  * @returns {boolean} is valid?
  */
 const isValidEntry = (dta) => {

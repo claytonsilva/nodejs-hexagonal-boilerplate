@@ -33,7 +33,7 @@ export const handler = async (event, context) => {
   const getTodo = async () => {
     try {
       const { id } = event.arguments
-      const result = await adapterInstance.getTodo(id)
+      const result = await adapterInstance.todo.getTodo(id)
       escriba.info('handler.get', `Get the task: ${id}`)
       return result
     } catch (error) {
@@ -45,7 +45,7 @@ export const handler = async (event, context) => {
   const createTodo = async () => {
     try {
       const { user } = event.arguments
-      const result = await adapterInstance.createTodo(event.arguments.data, user)
+      const result = await adapterInstance.todo.createTodo(event.arguments.data, user)
       escriba.info('handler.generate', `Generated the task: ${result.id}`, result)
       return result
     } catch (error) {
@@ -57,7 +57,7 @@ export const handler = async (event, context) => {
   const updateTodo = async () => {
     try {
       const { id, user } = event.arguments
-      const result = await adapterInstance.updateTodo(id, event.arguments.data, user)
+      const result = await adapterInstance.todo.updateTodo(id, event.arguments.data, user)
       escriba.info('handler.generate', `Generated the task: ${result.id}`, result)
       return result
     } catch (error) {
@@ -69,7 +69,7 @@ export const handler = async (event, context) => {
   const deleteTodo = async () => {
     try {
       const { id } = event.arguments
-      const result = await adapterInstance.deleteTodo(id)
+      const result = await adapterInstance.todo.deleteTodo(id)
       escriba.info('handler.get', `Delete the task: ${id}`)
       return result
     } catch (error) {

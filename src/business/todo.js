@@ -86,23 +86,11 @@ export const validateUpdateTodo = (data, originalData, owner) => {
     throwCustomError(new Error('invalid entry on field data, missing information'), methodPath, EClassError.USER_ERROR)
   }
 
-  if (!R.isEmpty(data.taskDescription) && (data.taskDescription === null || data.taskDescription === '')) {
-    throwCustomError(new Error('invalid entry on field data, missing information about taskDescription'), methodPath, EClassError.USER_ERROR)
-  }
-
   if (R.isNil(owner)) {
     throwCustomError(new Error('owner is missing'), methodPath, EClassError.USER_ERROR)
   }
 
-  if ((R.not(R.isNil(data.taskPriority)) && R.not(Object.values(EPriority).includes(data.taskPriority)))) {
-    throwCustomError(new Error(`invalid value for priority: got ${data.taskPriority}`), methodPath, EClassError.USER_ERROR)
-  }
-
-  if ((R.not(R.isNil(data.taskStatus)) && R.not(Object.values(ETodoStatus).includes(data.taskStatus)))) {
-    throwCustomError(new Error(`invalid value for status: got ${data.taskStatus}`), methodPath, EClassError.USER_ERROR)
-  }
-
-  return ['taskOwner', 'id']
+  return ['taskOwner', 'id', 'creationDate']
     .reduce(
       (reducedData, field) => R.dissoc(field, reducedData),
       {

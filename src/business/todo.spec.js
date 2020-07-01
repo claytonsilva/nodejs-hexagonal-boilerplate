@@ -120,34 +120,6 @@ describe('validateUpdateTodo', () => {
     expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
-  const validateCasePriorityInvalid = {
-    ...defaultOriginalData,
-    taskPriority: 'INVALID'
-  }
-
-  test('validate invalid taskPriority on update', () => {
-    const throwMessage = `invalid value for priority: got ${validateCasePriorityInvalid.taskPriority}`
-    expect(() => {
-      validateUpdateTodo(validateCasePriorityInvalid, defaultOriginalData, 'testUser')
-    }).toThrow(throwMessage)
-    // throws correct message
-    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
-  })
-
-  const validateCaseStatusInvalid = {
-    ...defaultOriginalData,
-    taskStatus: 'INVALID'
-  }
-
-  test('validate invalid taskStatus on update', () => {
-    const throwMessage = `invalid value for status: got ${validateCaseStatusInvalid.taskStatus}`
-    expect(() => {
-      validateUpdateTodo(validateCaseStatusInvalid, defaultOriginalData, 'testUser')
-    }).toThrow(throwMessage)
-    // throws correct message
-    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
-  })
-
   test('validate data when is null for update', () => {
     const throwMessage = 'invalid entry on field data, missing information'
     expect(() => {
@@ -157,28 +129,13 @@ describe('validateUpdateTodo', () => {
     expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
   })
 
-  const validateCaseNullDescription = {
-    ...defaultOriginalData,
-    taskDescription: null
-  }
-
-  test('validate null description when update', () => {
-    const throwMessage = 'invalid entry on field data, missing information about taskDescription'
-    expect(() => {
-      validateUpdateTodo(validateCaseNullDescription, defaultOriginalData, 'testUser')
-    }).toThrow(throwMessage)
-    // throws correct message
-    expect(throwCustomError).toHaveBeenCalledWith(new Error(throwMessage), methodPath, EClassError.USER_ERROR)
-  })
-
-  const validateCaseNormal = {
-    ...defaultOriginalData,
-    taskDescription: 'new description',
-    taskStatus: ETodoStatus.IN_PROGRESS,
-    taskPriority: EPriority.MODERATE
-  }
-
   test('validate normal update', () => {
+    const validateCaseNormal = {
+      ...defaultOriginalData,
+      taskDescription: 'new description',
+      taskStatus: ETodoStatus.IN_PROGRESS,
+      taskPriority: EPriority.MODERATE
+    }
     const updatedData = validateUpdateTodo(validateCaseNormal, defaultOriginalData, 'testUser')
     expect(updatedData)
       .toMatchObject({

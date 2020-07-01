@@ -1,6 +1,7 @@
 /**
  * Enum for ETodoStatus values.
  * @readonly
+ * @memberof business
  * @enum {string}
  */
 export const ETodoStatus = {
@@ -14,6 +15,7 @@ export const ETodoStatus = {
 /**
  * Enum for EPriority values.
  * @readonly
+ * @memberof business
  * @enum {string}
  */
 export const EPriority = {

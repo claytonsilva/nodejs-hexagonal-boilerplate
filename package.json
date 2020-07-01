@@ -7,9 +7,9 @@
     "build": "babel src -d dist --source-maps",
     "watch": "babel src -w -d dist --source-maps",
     "depcheck": "depcheck",
-    "test-ci": "jest --ci --reporters=jest-junit --outputFile=./test-results/jest",
+    "test-ci": "ENV_NAME=test jest --ci --reporters=jest-junit --outputFile=./test-results/jest",
     "start": "node dist/ports/http/bin/www",
-    "test": "jest",
+    "test": "ENV_NAME=test jest",
     "lint": "eslint -c .eslintrc src/**/*.js",
     "local-lambda": "serverless offline -s dev",
     "prebuild-lambda": "yarn build",
@@ -31,7 +31,7 @@
     "usePathForSuiteName": "true"
   },
   "engines": {
-    "node": "^12.18.0",
+    "node": "^12.18.1",
     "yarn": "^1.20.0",
     "npm": "^6.0.0"
   },

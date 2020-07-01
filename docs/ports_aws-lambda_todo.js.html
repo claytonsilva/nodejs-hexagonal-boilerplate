@@ -61,7 +61,7 @@ export const handler = async (event, context) => {
   const getTodo = async () => {
     try {
       const { id } = event.arguments
-      const result = await adapterInstance.getTodo(id)
+      const result = await adapterInstance.todo.getTodo(id)
       escriba.info('handler.get', `Get the task: ${id}`)
       return result
     } catch (error) {
@@ -73,7 +73,7 @@ export const handler = async (event, context) => {
   const createTodo = async () => {
     try {
       const { user } = event.arguments
-      const result = await adapterInstance.createTodo(event.arguments.data, user)
+      const result = await adapterInstance.todo.createTodo(event.arguments.data, user)
       escriba.info('handler.generate', `Generated the task: ${result.id}`, result)
       return result
     } catch (error) {
@@ -85,7 +85,7 @@ export const handler = async (event, context) => {
   const updateTodo = async () => {
     try {
       const { id, user } = event.arguments
-      const result = await adapterInstance.updateTodo(id, event.arguments.data, user)
+      const result = await adapterInstance.todo.updateTodo(id, event.arguments.data, user)
       escriba.info('handler.generate', `Generated the task: ${result.id}`, result)
       return result
     } catch (error) {
@@ -97,7 +97,7 @@ export const handler = async (event, context) => {
   const deleteTodo = async () => {
     try {
       const { id } = event.arguments
-      const result = await adapterInstance.deleteTodo(id)
+      const result = await adapterInstance.todo.deleteTodo(id)
       escriba.info('handler.get', `Delete the task: ${id}`)
       return result
     } catch (error) {
@@ -129,7 +129,7 @@ export const handler = async (event, context) => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="ports_aws_lambda.html">ports/aws/lambda</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EPriority">EPriority</a></li><li><a href="global.html#ETodoStatus">ETodoStatus</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="adapters.html">adapters</a></li><li><a href="business.html">business</a></li><li><a href="config.html">config</a></li><li><a href="utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#CustomError">CustomError</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">

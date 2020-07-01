@@ -22,5 +22,6 @@ module.exports = {
     projectType: 'custom',
     configFile: 'jest.config.js',
     enableFindRelatedTests: true
-  }
+  },
+  timeoutMS: 15000
 }

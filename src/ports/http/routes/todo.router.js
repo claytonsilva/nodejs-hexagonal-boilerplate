@@ -3,6 +3,8 @@
  */
 // eslint-disable-next-line no-unused-vars
 import { Logger } from 'log4js'
+// eslint-disable-next-line no-unused-vars
+import { Adapter } from '../../../adapters/index'
 
 /**
  * Code imports.
@@ -19,7 +21,7 @@ const router = Router()
  * @memberof ports/http/routes
  * @function
  * @param {Logger} escriba instance of escriba
- * @param {AdapterInstance} adapter instantiated adapter
+ * @param {Adapter} adapter instantiated adapter
  * @returns {Router}
  */
 

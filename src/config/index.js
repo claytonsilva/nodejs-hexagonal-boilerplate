@@ -78,11 +78,11 @@ const envProdName = 'production'
  */
 const appConfig = {
   appName: getEnv('APP_NAME', 'hexagonal-boilerplate'),
-  isProduction: getEnv('ENV_NAME') === envProdName,
-  envName: getEnv('ENV_NAME', 'staging'),
+  isProduction: getEnv('NODE_ENV') === envProdName,
+  envName: getEnv('NODE_ENV'),
   todo: {
-    tableName: getEnv('TODO_TABLE_NAME', 'todos'),
-    queueUrl: getEnv('AWS_DYNAMO_TODO_TABLE_NAME', 'todo')
+    tableName: getEnv('AWS_DYNAMO_TODO_TABLE_NAME', 'todos'),
+    queueUrl: getEnv('AWS_SQS_TODO_QUEUE_NAME', 'todo')
   }
 }
 

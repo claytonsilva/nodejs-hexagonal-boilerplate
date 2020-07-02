@@ -29,9 +29,9 @@ jobs:
       - checkout
       - run: yarn
       - run: yarn test-ci
-      # - run:
-      #     name: Stryker mutator
-      #     command: yarn stryker-mutate --reporters dashboard --dashboard.version $CIRCLE_BRANCH
+      - run:
+          name: Stryker mutator
+          command: yarn stryker-mutate --reporters dashboard --dashboard.version $CIRCLE_BRANCH
       - coveralls/upload:
           path_to_lcov: "./reports/coverage/lcov.info"
       - store_test_results:
@@ -39,11 +39,11 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      - build-and-test:
-          filters:
-            branches:
-              ignore: /^master/
-      - build-and-test-and-send-to-stryker:
-          filters:
-            branches:
-              ignore: /^(?!master).*$/
+      - build-and-test
+      # filters:
+      #   branches:
+      #     ignore: /^master/
+      - build-and-test-and-send-to-stryker
+        # filters:
+        #   branches:
+        #     ignore: /^(?!master).*$/

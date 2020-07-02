@@ -8,6 +8,7 @@ module.exports = {
   reporters: ['html', 'clear-text', 'progress'],
   testRunner: 'jest',
   coverageAnalysis: 'off',
+  maxConcurrentTestRunners: 2,
   dashboard: {
     project: 'github.com/claytonsilva/nodejs-hexagonal-boilerplate'
   },

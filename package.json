@@ -113,6 +113,9 @@
     "mkdirp": "^1.0.3",
     "typescript": ">=2.8.0",
     "debug": "^4.1.1",
-    "yargs-parser": "^18.1.2"
+    "yargs-parser": "^18.1.2",
+    "bl": ">=4.0.3",
+    "node-fetch": ">=2.6.1",
+    "dot-prop": ">=4.2.1"
   }
 }

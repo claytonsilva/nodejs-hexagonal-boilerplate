@@ -49,7 +49,7 @@
     }
   },
   "dependencies": {
-    "aws-sdk": "^2.582.0",
+    "aws-sdk": "^2.814.0",
     "body-parser": "^1.19.0",
     "cuid": "^2.1.8",
     "debug": "^4.1.1",

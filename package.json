@@ -55,7 +55,7 @@
     "debug": "^4.1.1",
     "escriba": "^2.5.0",
     "express": "^4.17.1",
-    "log4js": "^5.1.0",
+    "log4js": "^6.4.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.21",
     "ramda": "^0.26.1",

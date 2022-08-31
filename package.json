@@ -57,7 +57,7 @@
     "express": "^4.17.1",
     "log4js": "^5.1.0",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.21",
+    "moment-timezone": "^0.5.35",
     "ramda": "^0.26.1",
     "uuid": "^7.0.2"
   },

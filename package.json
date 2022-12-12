@@ -54,7 +54,7 @@
     "cuid": "^2.1.8",
     "debug": "^4.1.1",
     "escriba": "^2.5.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "log4js": "^5.1.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.21",

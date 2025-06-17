@@ -1,0 +1,26 @@
+name: Node.js CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.15.x"
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y tzdata
+      - run: sudo ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+      - run: yarn
+      - run: yarn test-ci
+      - coveralls/upload:
+          path_to_lcov: "./reports/coverage/lcov.info"
+      - store_test_results:
+          path: test-results

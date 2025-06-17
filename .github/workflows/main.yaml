@@ -17,6 +17,7 @@ jobs:
       - run: sudo apt-get install -y tzdata
       - run: sudo ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
       - run: yarn
+
       - run: yarn test-ci
       - name: Coveralls
         uses: coverallsapp/github-action@v2

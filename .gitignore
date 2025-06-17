@@ -15,3 +15,4 @@ reports/
 terraform.tfstate
 terraform.tfstate.backup
 .terraform/
+.stryker-tmp/

@@ -1,0 +1,33 @@
+---
+name: Mutator CI
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - .github/workflows/mutator.yaml
+      - .github/workflows/main.yaml
+env:
+  SERVICE_HOST: "dashboard.stryker-mutator.io"
+  PROJECT: "nodejs-hexagonal-boilerplate"
+  API_KEY: ${{ secrets.STRIKER_MUTATOR_TOKEN }}
+
+jobs:
+  mutator:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.15.x"
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y tzdata
+      - run: sudo ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+      - run: yarn
+      - run: yarn test-ci
+      - name: Mutator run mutator
+        run: |
+          yarn stryker-mutate --reporters dashboard \
+          --dashboard.version ${{env.GITHUB_REF_NAME}}

@@ -3,21 +3,20 @@
  */
 
 module.exports = {
-  mutator: 'javascript',
   packageManager: 'npm',
   reporters: ['html', 'clear-text', 'progress', 'dashboard'],
   testRunner: 'jest',
   coverageAnalysis: 'off',
-  maxConcurrentTestRunners: 2,
   dashboard: {
     project: 'github.com/claytonsilva/nodejs-hexagonal-boilerplate'
   },
+  ignorePatterns: ["reports", "node_modules"],
   mutate: [
     'src/**/*.js',
     '!src/ports/http/**/*.js',
     '!src/ports/aws-lambda/**/*.js',
     '!src/ports/logger/**/*.js',
-    '!src/**/*.spec.js'
+    '!src/**/*.spec.js',
   ],
   jest: {
     projectType: 'custom',

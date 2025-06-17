@@ -2,16 +2,11 @@
 name: Mutator CI
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - .github/workflows/mutator.yaml
-      - .github/workflows/main.yaml
-env:
-  SERVICE_HOST: "dashboard.stryker-mutator.io"
-  PROJECT: "nodejs-hexagonal-boilerplate"
-  API_KEY: ${{ secrets.STRIKER_MUTATOR_TOKEN }}
-
+    # branches:
+    #   - main
+    # paths-ignore:
+    #   - .github/workflows/mutator.yaml
+    #   - .github/workflows/main.yaml
 jobs:
   mutator:
     runs-on: ubuntu-latest
@@ -37,3 +32,5 @@ jobs:
         run: |
           yarn stryker-mutate --reporters dashboard \
           --dashboard.version ${{ steps.extract_branch.outputs.branch }}
+        env:
+          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRIKER_MUTATOR_TOKEN  }}

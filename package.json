@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.582.0",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.3",
     "cuid": "^2.1.8",
     "debug": "^4.1.1",
     "escriba": "^2.5.0",

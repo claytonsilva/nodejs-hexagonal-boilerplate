@@ -1,3 +1,4 @@
+---
 name: Node.js CI
 
 on: [pull_request]
@@ -26,4 +27,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: ./reports/test-results/
+          path: ./test-results/

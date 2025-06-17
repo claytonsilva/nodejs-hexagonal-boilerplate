@@ -5,7 +5,7 @@
 module.exports = {
   mutator: 'javascript',
   packageManager: 'npm',
-  reporters: ['html', 'clear-text', 'progress'],
+  reporters: ['html', 'clear-text', 'progress', 'dashboard'],
   testRunner: 'jest',
   coverageAnalysis: 'off',
   maxConcurrentTestRunners: 2,

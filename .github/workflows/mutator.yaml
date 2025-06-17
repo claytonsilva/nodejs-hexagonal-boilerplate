@@ -27,7 +27,13 @@ jobs:
       - run: sudo ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
       - run: yarn
       - run: yarn test-ci
+      - name: Extract branch name
+        shell: bash
+        run: |
+          echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" \
+          >> $GITHUB_OUTPUT
+        id: extract_branch
       - name: Mutator run mutator
         run: |
           yarn stryker-mutate --reporters dashboard \
-          --dashboard.version ${{env.GITHUB_REF_NAME}}
+          --dashboard.version ${{ steps.extract_branch.outputs.branch }}

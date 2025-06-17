@@ -1,6 +1,6 @@
 name: Node.js CI
 
-on: [push]
+on: [pull_request]
 
 jobs:
   build:
@@ -12,15 +12,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22.15.x"
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
       - run: sudo apt-get update
       - run: sudo apt-get install -y tzdata
       - run: sudo ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
       - run: yarn
       - run: yarn test-ci
-      - coveralls/upload:
-          path_to_lcov: "./reports/coverage/lcov.info"
-      - store_test_results:
-          path: test-results
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./reports/coverage/lcov.info
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: ./reports/test-results/

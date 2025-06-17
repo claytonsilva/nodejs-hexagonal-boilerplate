@@ -31,9 +31,9 @@
     "usePathForSuiteName": "true"
   },
   "engines": {
-    "node": "^12.18.1",
-    "yarn": "^1.20.0",
-    "npm": "^6.0.0"
+    "node": "^22",
+    "yarn": "^1.22",
+    "npm": "^10"
   },
   "lint-staged": {
     "src/**/*.js": [
